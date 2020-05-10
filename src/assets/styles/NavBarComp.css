@@ -1,0 +1,16 @@
+body {
+    margin: 0;
+    padding: 0;
+}
+
+.navbar {
+    background: rgba(27, 27, 47, 0.9);
+}
+
+.navbar-nav {
+    color: red;
+}
+
+.shopping-cart {
+    width: 100vmin;
+}
