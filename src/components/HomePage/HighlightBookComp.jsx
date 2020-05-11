@@ -11,7 +11,7 @@ export const HighlightBook = () => {
                     <figure className="product-image-box">
                         <span className="onsale">Sale!</span>
                         <img width="250" height="333"
-                             src={require('../../assets/images/product/book01.jpeg')}
+                             src={require('../../assets/images/product/book-23-250x333.jpg')}
                              className="img-fluid attachment-woocommerce_thumbnail size-woocommerce_thumbnail"
                              alt=""
                              sizes="(max-width: 250px) 100vw, 250px"/></figure>
