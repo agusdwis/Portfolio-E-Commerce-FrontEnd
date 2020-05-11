@@ -22,9 +22,18 @@ class HomePage extends Component {
                         </div>
                         <div className="container mt-3">
                             <div className="row">
-
-                                <HighlightBook/>
-
+                                <div className="col-sm-3 col-md-3 card-cascade mb-5">
+                                    <HighlightBook/>
+                                </div>
+                                <div className="col-sm-3 col-md-3 card-cascade mb-5">
+                                    <HighlightBook/>
+                                </div>
+                                <div className="col-sm-3 col-md-3 card-cascade mb-5">
+                                    <HighlightBook/>
+                                </div>
+                                <div className="col-sm-3 col-md-3 card-cascade mb-5">
+                                    <HighlightBook/>
+                                </div>
                             </div>
                         </div>
                     </div>

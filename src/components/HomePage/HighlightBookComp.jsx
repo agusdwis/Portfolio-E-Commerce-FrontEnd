@@ -6,7 +6,7 @@ import '../../assets/styles/HiglightBookComp.css';
 export const HighlightBook = () => {
     return(
         <Fragment>
-            <div className="col-sm-3 col-md-3 card-cascade mb-3">
+            {/*<div className="col-sm-3 col-md-3 card-cascade mb-3">*/}
                 <div className="product-inner">
                     <figure className="product-image-box">
                         <span className="onsale">Sale!</span>
@@ -47,7 +47,7 @@ export const HighlightBook = () => {
                         </div>
                     </div>
                 </div>
-            </div>
+            {/*</div>*/}
         </Fragment>
     )
 };
