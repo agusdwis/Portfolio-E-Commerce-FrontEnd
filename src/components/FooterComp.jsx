@@ -7,7 +7,7 @@ import "../assets/styles/FooterComp.css"
 const FooterComp = () => {
     return(
         <Fragment>
-            <footer className="my-footer font-small blue mt-5">
+            <footer className="my-footer font-small blue">
                 {/*Contact*/}
                 <div className="page-footer font-small blue-grey lighten-5">
                     <div className="container text-center text-md-left mt-5">
@@ -16,7 +16,7 @@ const FooterComp = () => {
                             <div className="col-md-3 col-lg-4 col-xl-3 mb-4">
                                 <h6 className="text-uppercase font-weight-bold">About Us</h6>
                                 <hr className="teal accent-3 mb-4 mt-0 d-inline-block mx-auto" style={{width: "100px"}}/>
-                                    <p>We Are The Cheapest Online Bookstore on Earth!!.</p>
+                                    <p>We Are The Cheapest Online Bookstore on Earth!</p>
 
                             </div>
                             <div className="col-md-2 col-lg-2 col-xl-3 mx-auto mb-4">

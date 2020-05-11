@@ -1,0 +1,119 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap');
+
+.product-inner {
+    border-radius: 8px;
+    background: #ffffff;
+    box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.57);
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.product-inner figure {
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+}
+
+.product-image-box {
+    position: relative;
+}
+
+figure {
+    display: block;
+    padding-top: 2px;
+
+}
+
+figure img {
+    border-radius: 8px;
+    background: #ffffff;
+    box-shadow: 0 0 1px 0 rgba(0, 0, 0, 0.57);
+}
+
+.product-price-box {
+    position: relative;
+    padding: 10px 10px 10px;
+    text-align: center;
+    transition: background 1s;
+}
+
+.product__title{
+    padding: .5em 0;
+    margin: 0;
+    font-size: 1em;
+    color: #0f13ff;
+}
+
+.person-name {
+    display: block;
+    position: relative;
+    color: #7480a7;
+    font-size: 12px;
+    font-style: italic;
+    line-height: normal;
+    text-transform: capitalize;
+    margin-bottom: 1vmin;
+}
+
+.woo-button-wrapper .woo-button-border {
+    border: 1px solid #bfc7c8;
+    border-radius: 20px;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.woo-button-wrapper a.button.product-button {
+    border-radius: 20px 0 0 20px;
+}
+
+.price {
+    position: relative;
+    margin: 0;
+    padding: 10px 0 0;
+    color: #de7886;
+    font-family: "Montserrat", sans-serif;
+    font-size: 15px;
+}
+
+.price del {
+    font-size: 14px;
+    line-height: normal;
+}
+
+.price ins {
+    font-weight: normal;
+    color: #040404;
+    font-family: "Montserrat", sans-serif;
+    font-size: 15px;
+}
+
+span.onsale {
+    min-height: 20px;
+    padding: 2px 10px;
+    border-radius: 4px;
+    color: #ffffff;
+    background: #00afd8;
+    font-family: "Montserrat", sans-serif;
+    line-height: 20px;
+    text-transform: uppercase;
+}
+
+span.onsale {
+    min-height: 3.236em;
+    min-width: 3.236em;
+    padding: .202em;
+    font-weight: 700;
+    position: absolute;
+    text-align: center;
+    line-height: 3.236;
+    top: -.5em;
+    left: -.5em;
+    margin: 0;
+    border-radius: 100%;
+    background-color: #77a464;
+    color: #fff;
+    font-size: .857em;
+    z-index: 9;
+}
+

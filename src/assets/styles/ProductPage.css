@@ -1,0 +1,16 @@
+.wrapper {
+    margin: 0;
+    padding: 0;
+}
+
+.product-page> .jumbotron-fluid {
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    background-color: rgb(81,85,112);
+    color: white;
+}
+
+.navbar-page {
+    position: static;
+}

@@ -4,7 +4,10 @@ body {
 }
 
 .navbar {
-    background: rgba(27, 27, 47, 0.9);
+    background: rgb(49,48,67);
+    -webkit-box-shadow: 2px 13px 13px -9px rgba(0, 0, 0, 0.29);
+    -moz-box-shadow: 2px 13px 13px -9px rgba(0, 0, 0, 0.32);
+    box-shadow: 2px 13px 13px -9px rgba(0, 0, 0, 0.3);
 }
 
 .navbar-nav {

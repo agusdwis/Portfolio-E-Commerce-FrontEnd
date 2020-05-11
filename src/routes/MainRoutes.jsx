@@ -1,15 +1,27 @@
 import React from "react";
 import {BrowserRouter, Route, Switch} from "react-router-dom";
+import {Provider} from "react-redux";
+import store from "../stores";
 
 import HomePage from "../pages/HomePage";
+import SignIn from "../pages/SigninPage";
+import SignUp from "../pages/SignupPage";
+
+import ProductPage from "../pages/ProductPage";
 
 const MainRoutes = () => {
     return(
-        <BrowserRouter>
-            <Switch>
-                <Route exact path="/" component={HomePage} />
-            </Switch>
-        </BrowserRouter>
+        <Provider store={store}>
+            <BrowserRouter>
+                <Switch>
+                    <Route exact path="/" component={HomePage} />
+                    <Route exact path="/login" component={SignIn} />
+                    <Route exact path="/register" component={SignUp} />
+                    <Route exact path="/book" component={ProductPage} />
+                    <Route path="/book/:id" component={ProductPage} />
+                </Switch>
+            </BrowserRouter>
+        </Provider>
 
     );
 };
