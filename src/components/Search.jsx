@@ -28,7 +28,7 @@ export const BookSearch = () => {
                         <div className="row">
                             <div className="col-sm-6 col-md-3">
                                 <div className="form-group">
-                                    <input name="s" value="" type="text" className="form-control" id="keyword"
+                                    <input name="search" value="" type="text" className="form-control" id="keyword"
                                            placeholder="Book Title"/>
                                 </div>
                             </div>

@@ -1,3 +1,9 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap');
+
+* {
+    font-family: 'Montserrat', sans-serif;
+}
+
 a, a:hover, Link {
     text-decoration: none;
     color: rgba(11, 11, 11, 0.47);

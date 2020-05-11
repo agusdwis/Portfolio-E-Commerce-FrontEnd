@@ -3,8 +3,13 @@ import Navbar from "../components/NavBarComp";
 import {Link} from 'react-router-dom';
 
 import '../assets/styles/FormInput.css'
+import {changeInputUser, doRegister} from "../stores/actions/userAction";
+import {connect} from "react-redux";
 
 class SignUp extends Component {
+    postRegister = async () => {
+        await this.props.doRegister();
+    };
     render() {
         return (
             <Fragment>
@@ -20,24 +25,24 @@ class SignUp extends Component {
                                     <h5 className="card-title text-center"><b>Sign Up</b></h5>
                                     <div className="md-form">
                                         <i className="fas fa-envelope prefix white-text"> </i>
-                                        <input type="text" name="emailUser" id="orangeForm-email" placeholder="email"
+                                        <input onChange={(e) => this.props.changeInput(e)} type="text" name="emailUser" id="orangeForm-email" placeholder="email"
                                                className="form-control" />
                                     </div>
                                     <br/>
                                     <div className="md-form">
                                         <i className="fas fa-user prefix white-text"> </i>
-                                        <input type="text" name="namaUser" id="orangeForm-name" placeholder="username"
+                                        <input onChange={(e) => this.props.changeInput(e)} type="text" name="namaUser" id="orangeForm-name" placeholder="username"
                                                className="form-control" />
                                     </div>
                                     <br/>
                                     <div className="md-form">
                                         <i className="fas fa-lock prefix white-text"> </i>
-                                        <input type="password" name="passwordUser" id="orangeForm-pass" placeholder="password"
+                                        <input onChange={(e) => this.props.changeInput(e)} type="password" name="passwordUser" id="orangeForm-pass" placeholder="password"
                                                className="form-control" />
                                     </div>
                                     <br/>
                                     <div className="text-center">
-                                        <button className="btn btn-primary btn-lg btn-block my-button">SignUp
+                                        <button onClick={() => this.postRegister()} className="btn btn-primary btn-lg btn-block my-button">SignUp
                                         </button>
                                     </div>
                                     <br/>
@@ -55,4 +60,17 @@ class SignUp extends Component {
     }
 }
 
-export default SignUp;
+const mapStateToProps = (state) => {
+    return {
+        namaUser: state.user.namaUser,
+        passwordUser: state.user.passwordUser,
+        login: state.user.is_login,
+    };
+};
+
+const mapDispatchToProps = {
+    changeInput: (e) => changeInputUser(e),
+    doRegister: doRegister,
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(SignUp);

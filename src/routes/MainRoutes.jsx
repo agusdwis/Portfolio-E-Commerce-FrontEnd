@@ -8,6 +8,7 @@ import SignIn from "../pages/SigninPage";
 import SignUp from "../pages/SignupPage";
 
 import ProductPage from "../pages/ProductPage";
+import ProductDetail from "../pages/ProductDetailPage";
 
 const MainRoutes = () => {
     return(
@@ -18,7 +19,8 @@ const MainRoutes = () => {
                     <Route exact path="/login" component={SignIn} />
                     <Route exact path="/register" component={SignUp} />
                     <Route exact path="/book" component={ProductPage} />
-                    <Route path="/book/:id" component={ProductPage} />
+                    {/*<Route path="/book/:id" component={ProductPage} />*/}
+                    <Route path="/produk/:id" component={ProductDetail} />
                 </Switch>
             </BrowserRouter>
         </Provider>

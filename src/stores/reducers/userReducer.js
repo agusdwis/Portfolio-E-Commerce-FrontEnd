@@ -5,6 +5,7 @@ const initialState = {
     is_login: false,
     namaUser: "",
     passwordUser: "",
+    emailUser: "",
     token: "",
 };
 
@@ -20,6 +21,12 @@ export default function userReducer(userState = initialState, action) {
                 ...userState,
                 token: action.payload.token,
                 is_login: true,
+            };
+        case "SUCCESS_REGISTER":
+            return {
+                ...userState,
+                is_login: true
+
             };
         case "SUCCESS_LOGOUT":
             return {

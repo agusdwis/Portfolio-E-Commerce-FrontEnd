@@ -29,3 +29,70 @@
 .card-detail p, span {
     font-size: 13px;
 }
+
+/** product detail **/
+.checked, .price span {
+    color: #ff9f1a; }
+
+.product-title, .rating, .product-description, .price, .vote, .sizes {
+    margin-bottom: 15px; }
+
+.product-title {
+    margin-top: 0; }
+
+.size {
+    margin-right: 10px; }
+.size:first-of-type {
+    margin-left: 40px; }
+
+.summary p.price {
+    display: block;
+    margin: -20px -20px 15px -20px;
+    padding: 10px 20px;
+    border-radius: 6px 6px 0 0;
+    background: #edf3f4;
+}
+p.price,
+span.price {
+    display: block;
+    margin-bottom: 25px;
+    color: #222222;
+    font-size: 25px;
+    line-height: 30px;
+}
+
+p.price del,
+span.price del {
+    display: inline-block;
+    color: #757575;
+}
+form.cart {
+    clear: both;
+    overflow: hidden;
+    margin-bottom: 0;
+    padding: 0;
+    border: none;
+}
+
+@media (min-width: 1200px) {
+    div.product .summary .product-offer-box {
+    display: inline-block;
+    min-width: 60%;
+}}
+
+form.cart button.single_add_to_cart_button {
+    margin-bottom: 30px;
+    padding: 12px 30px;
+    font-family: "Montserrat", sans-serif;
+    font-size: 16px;
+    line-height: 16px;
+}
+
+form.cart .button {
+    vertical-align: middle;
+    float: left;
+}
+
+.action-card {
+    border: 1px solid darkgrey;
+}

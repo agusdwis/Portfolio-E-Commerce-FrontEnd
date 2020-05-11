@@ -1,4 +1,5 @@
 import React, {Fragment} from "react";
+import {Link} from 'react-router-dom';
 
 //import static files
 import '../../assets/styles/HiglightBookComp.css';
@@ -8,13 +9,13 @@ export const HighlightBook = () => {
         <Fragment>
             {/*<div className="col-sm-3 col-md-3 card-cascade mb-3">*/}
                 <div className="product-inner">
-                    <figure className="product-image-box">
+                    <Link to="/produk/:id"><figure className="product-image-box">
                         <span className="onsale">Sale!</span>
                         <img width="250" height="333"
                              src={require('../../assets/images/product/book-23-250x333.jpg')}
                              className="img-fluid attachment-woocommerce_thumbnail size-woocommerce_thumbnail"
                              alt=""
-                             sizes="(max-width: 250px) 100vw, 250px"/></figure>
+                             sizes="(max-width: 250px) 100vw, 250px"/></figure></Link>
 
                     <div className="product-price-box clearfix"><h2
                         className="product__title">Judul Buku Bacaan</h2>
