@@ -30,19 +30,21 @@ class ProductPage extends Component {
                     <div className="row">
                         <div className="col-md-9 col-sm-12">
                             <div className="row">
-                                <HighlightBook/>
-                                <HighlightBook/>
-                                <HighlightBook/>
-                                <HighlightBook/>
-                                <HighlightBook/>
-                                <HighlightBook/>
-                                <HighlightBook/>
-                                <HighlightBook/>
-                                <HighlightBook/>
-                                <HighlightBook/>
-                                <HighlightBook/>
-                                <HighlightBook/>
-                                <HighlightBook/>
+
+                                    <HighlightBook/>
+                                    <HighlightBook/>
+                                    <HighlightBook/>
+                                    <HighlightBook/>
+                                    <HighlightBook/>
+                                    <HighlightBook/>
+                                    <HighlightBook/>
+                                    <HighlightBook/>
+                                    <HighlightBook/>
+                                    <HighlightBook/>
+                                    <HighlightBook/>
+                                    <HighlightBook/>
+                                    <HighlightBook/>
+
                             </div>
                         </div>
 
