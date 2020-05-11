@@ -6,7 +6,7 @@ const BookDetail = () => {
     return(
     <Fragment>
         <div className="container py-5">
-            <div className="card">
+            <div className="card detail-card">
                 <div className="container-fliud">
                     <div className="wrapper row">
                         <div className="preview col-md-5">
@@ -75,7 +75,6 @@ const BookDetail = () => {
                                 <ReviewBook/>
                                 <ReviewBook/>
                                 <ReviewBook/>
-
                             </div>
                         </div>
                     </div>

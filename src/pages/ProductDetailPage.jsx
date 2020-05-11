@@ -38,7 +38,7 @@ const ProductDetail = () => {
 
             <BookSearch/>
 
-            <div className="detail-produk bg-primary">
+            <div className="detail-produk bg-success">
                 <BookDetail/>
             </div>
 

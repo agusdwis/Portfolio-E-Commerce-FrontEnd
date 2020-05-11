@@ -31,7 +31,7 @@
 }
 
 /** product detail **/
-.checked, .price span {
+.checked{
     color: #ff9f1a; }
 
 .product-title, .rating, .product-description, .price, .vote, .sizes {
@@ -56,7 +56,7 @@ p.price,
 span.price {
     display: block;
     margin-bottom: 25px;
-    color: #222222;
+    color: #902b25;
     font-size: 25px;
     line-height: 30px;
 }
@@ -64,7 +64,7 @@ span.price {
 p.price del,
 span.price del {
     display: inline-block;
-    color: #757575;
+    color: #8a8a8a;
 }
 form.cart {
     clear: both;
@@ -95,4 +95,8 @@ form.cart .button {
 
 .action-card {
     border: 1px solid darkgrey;
+}
+
+.detail-card {
+    border-radius: 10px;
 }
