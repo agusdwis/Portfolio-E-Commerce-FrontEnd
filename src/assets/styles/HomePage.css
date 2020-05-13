@@ -21,17 +21,26 @@
 }
 
 .popular-container {
-    background-color: rgba(255, 193, 186, 0.16);
+    background-color: #2a9d8f;
+    font-weight: bold;
 }
 
 .new-container {
-    background-color: rgba(255, 248, 133, 0.16);
+    background-color: #e9c46a;
+    font-weight: bold;
 }
 
 .best_seller-container {
-    background-color: rgba(150, 255, 158, 0.16);
+    background-color: #f4a261;
+    font-weight: bold;
 }
 
 .promo-container {
-    background-color: rgba(104, 118, 255, 0.16);
+    background-color: #e7c1ba;
+    font-weight: bold;
+}
+
+.column-inner h3 {
+    font-weight: bold;
+    color: #161616;
 }

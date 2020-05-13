@@ -9,6 +9,9 @@ import SignUp from "../pages/SignupPage";
 
 import ProductPage from "../pages/ProductPage";
 import ProductDetail from "../pages/ProductDetailPage";
+import NotMatch from "../pages/NotMatch";
+import Profile from "../pages/Profile";
+import ProfileEdit from "../components/ProfileComp";
 
 const MainRoutes = () => {
     return(
@@ -18,9 +21,12 @@ const MainRoutes = () => {
                     <Route exact path="/" component={HomePage} />
                     <Route exact path="/login" component={SignIn} />
                     <Route exact path="/register" component={SignUp} />
+                    <Route exact path={'/profile'} component={Profile} />
+                    <Route exact path={'/profile/edit'} component={ProfileEdit} />
                     <Route exact path="/book" component={ProductPage} />
-                    {/*<Route path="/book/:id" component={ProductPage} />*/}
+                    <Route path="/book/:category" component={ProductPage} />
                     <Route path="/produk/:id" component={ProductDetail} />
+                    <Route component={NotMatch} />
                 </Switch>
             </BrowserRouter>
         </Provider>

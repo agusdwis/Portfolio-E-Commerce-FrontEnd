@@ -8,10 +8,10 @@ import {BookSearch} from "../components/Search";
 import '../assets/styles/ProductPage.css';
 import BookDetail from "../components/BookDetailComp";
 import {HighlightBook} from "../components/HomePage/HighlightBookComp";
-import CardCategory from "../components/CardCategoryComp";
 import FooterComp from "../components/FooterComp";
 
 const ProductDetail = () => {
+
     return(
         <Fragment>
             <div className="navbar-page">

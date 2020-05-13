@@ -14,7 +14,7 @@ const BookDetail = () => {
                                 <div className="tab-pane active" id="pic-1">
                                     <img width="300" height="350" className="img-fluid"
                                          src={require('../assets/images/product/book-23-250x333.jpg')}
-                                         sizes="(max-width: 300px) 100vw, 300px"/>
+                                         sizes="(max-width: 300px) 100vw, 300px" alt="Our Product"/>
                                 </div>
                             </div>
 

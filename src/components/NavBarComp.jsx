@@ -5,8 +5,15 @@ import ShoppingCartIcon from '@material-ui/icons/ShoppingCart';
 // import static files
 import "../assets/styles/NavBarComp.css"
 import {Search} from "./Search";
+import Avatar from "@material-ui/core/Avatar";
 
-const NavBar = () => {
+const NavBar = (props, postLogout) => {
+    postLogout = async () => {
+        localStorage.removeItem('is_login');
+        await props.doSignOut();
+    };
+
+    const login = localStorage.getItem('is_login');
     return(
         <Fragment>
             <nav className="navbar navbar-expand-lg navbar-dark scrolling-navbar ">
@@ -32,13 +39,20 @@ const NavBar = () => {
 
                         <Search/>
 
-                        <div className="navbar-nav">
-                            <Link to="/login" className="nav-item nav-link">MASUK</Link>
-                            <Link to="/register" className="nav-item nav-link">DAFTAR</Link>
-                        </div>
+                        {props.login || login?
+                            <div className="navbar-nav mx-1">
+                                <Link to={'/profile'}><Avatar alt="Remy Sharp" src={require('../assets/images/avatar/avatar')}/></Link>
+                                <Link onClick={()=>postLogout()} to="#" className="nav-item nav-link">KELUAR</Link>
+                            </div>
+                            :
+                            <div className="navbar-nav mx-1">
+                                <Link to="/login" className="nav-item nav-link">MASUK</Link>
+                                <Link to="/register" className="nav-item nav-link">DAFTAR</Link>
+                            </div>
+                        }
                         <div className="navbar-nav">
                             <Link to="#" className="nav-item nav-link">
-                                <Badge badgeContent={1} color="error">
+                                <Badge badgeContent={10} color="error">
                                     <ShoppingCartIcon />
                                 </Badge>
                             </Link>
