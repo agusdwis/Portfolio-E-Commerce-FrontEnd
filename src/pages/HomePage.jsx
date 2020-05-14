@@ -16,8 +16,15 @@ class HomePage extends Component {
 
     };
 
-    handleUserBook = async (bookID) => {
-        await this.props.history.replace("/produk/" + bookID);
+    // handleUserBook = async (bookID) => {
+    //     await this.props.history.replace("/produk/" + bookID);
+    //     const paramId = await this.props.match.params.bookID;
+    //
+    // };
+
+    handleClick=(e)=>{
+        e.preventDefault();
+        this.props.history.push("/product/"+ e.target.value);
     };
 
     render() {
@@ -42,13 +49,16 @@ class HomePage extends Component {
                         <div className="container mt-3">
                             <div className="row">
                                 {PopularBook.slice(0,4).map((el, index) => (
-                                    <div key={index} className="col-sm-3 col-md-3 card-cascade mb-5 card-product d-flex align-items-stretch">
+                                    <div key={index} className="col-sm-3 col-md-3 card-cascade mb-5 pb-5 card-product" >
                                         <HighlightBook title={el.title} penulis={el.penulis}
                                                 penerbit={el.penerbit} price={el.price} category={el.category}
                                                 url_image={el.image} desc={el.description} sold={el.sold} stock={el.stock}
                                                 promo={el.promo} baru={el.baru} pilihan={el.pilihan} popular={el.popular}
                                                 best_seller={el.best_seller} special_price={el.special_price} book_id={el.id}
                                         />
+                                        <div className="button d-flex justify-content-center">
+                                            <button onClick={e => this.handleClick(e)} value={el.id} type="button" className="btn btn-primary">Detail</button>
+                                        </div>
                                     </div>
                                 ))}
                             </div>
@@ -65,13 +75,16 @@ class HomePage extends Component {
                         <div className="container mt-3">
                             <div className="row">
                                 {NewBook.slice(0,4).map((el, index) => (
-                                    <div key={index} className="col-sm-3 col-md-3 card-cascade mb-5 card-product d-flex align-items-stretch">
+                                    <div key={index} className="col-sm-3 col-md-3 card-cascade mb-5 pb-5 card-product">
                                         <HighlightBook title={el.title} penulis={el.penulis}
                                                        penerbit={el.penerbit} price={el.price} category={el.category}
                                                        url_image={el.image} desc={el.description} sold={el.sold} stock={el.stock}
                                                        promo={el.promo} baru={el.baru} pilihan={el.pilihan} popular={el.popular}
                                                        best_seller={el.best_seller} special_price={el.special_price} book_id={el.id}
                                         />
+                                        <div className="button d-flex justify-content-center">
+                                            <button onClick={e => this.handleClick(e)} value={el.id} type="button" className="btn btn-primary">Detail</button>
+                                        </div>
                                     </div>
                                 ))}
                             </div>
@@ -88,13 +101,16 @@ class HomePage extends Component {
                         <div className="container mt-3">
                             <div className="row">
                                 {AllBook.slice(0,4).map((el, index) => (
-                                    <div key={index} className="col-sm-3 col-md-3 card-cascade mb-5 card-product d-flex align-items-stretch">
+                                    <div key={index} className="col-sm-3 col-md-3 card-cascade mb-5 pb-5 card-product">
                                         <HighlightBook title={el.title} penulis={el.penulis}
                                                        penerbit={el.penerbit} price={el.price} category={el.category}
                                                        url_image={el.image} desc={el.description} sold={el.sold} stock={el.stock}
                                                        promo={el.promo} baru={el.baru} pilihan={el.pilihan} popular={el.popular}
                                                        best_seller={el.best_seller} special_price={el.special_price} book_id={el.id}
                                         />
+                                        <div className="button d-flex justify-content-center">
+                                            <button onClick={e => this.handleClick(e)} value={el.id} type="button" className="btn btn-primary">Detail</button>
+                                        </div>
                                     </div>
                                 ))}
                             </div>
@@ -111,13 +127,16 @@ class HomePage extends Component {
                         <div className="container mt-3">
                             <div className="row">
                                 {PromoBook.slice(0,4).map((el, index) => (
-                                    <div key={index} className="col-sm-3 col-md-3 card-cascade mb-5 card-product d-flex align-items-stretch">
+                                    <div key={index} className="col-sm-3 col-md-3 card-cascade mb-5 pb-5 card-product">
                                         <HighlightBook {...this.props} title={el.title} penulis={el.penulis}
                                                        penerbit={el.penerbit} price={el.price} category={el.category}
                                                        url_image={el.image} desc={el.description} sold={el.sold} stock={el.stock}
                                                        promo={el.promo} baru={el.baru} pilihan={el.pilihan} popular={el.popular}
                                                        best_seller={el.best_seller} special_price={el.special_price} book_id={el.id}
                                         />
+                                        <div className="button d-flex justify-content-center">
+                                            <button onClick={e => this.handleClick(e)} value={el.id} type="button" className="btn btn-primary">Detail</button>
+                                        </div>
                                     </div>
                                 ))}
                             </div>

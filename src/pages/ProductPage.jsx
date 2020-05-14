@@ -18,7 +18,13 @@ import {changeInputUser, closeAlert, doSignOut} from "../stores/actions/userActi
 class ProductPage extends Component {
     componentDidMount = async () => {
         this.props.getPopularProduct();
+        console.log(this.props)
 
+    };
+
+    handleClick=(e)=>{
+        e.preventDefault();
+        this.props.history.push("/product/"+ e.target.value);
     };
 
     render() {
@@ -59,13 +65,48 @@ class ProductPage extends Component {
                                                            promo={el.promo} baru={el.baru} pilihan={el.pilihan} popular={el.popular}
                                                            best_seller={el.best_seller} special_price={el.special_price} book_id={el.id}
                                             />
+                                            <div className="button d-flex justify-content-center">
+                                                <button onClick={e => this.handleClick(e)} value={el.id} type="button" className="btn btn-primary">Detail</button>
+                                            </div>
                                         </div>
                                     ))}
                                 </div>
                             </div>
 
                             <div className="col-md-3 col-sm-12 pt-5">
-                                <CardCategory/>
+                                <div className="category-list">
+                                    <div className="card card-detail mb-2">
+                                        <div className="justify-content-center my-4">
+                                            <h6 className="text-center mb-4">TOP RATED PRODUCT</h6>
+
+                                            {PopularBooks.slice(0,5).map((el, index) => (
+                                                <div key={index}>
+                                                    <CardCategory title={el.title} penulis={el.penulis}
+                                                                   penerbit={el.penerbit} price={el.price} category={el.category}
+                                                                   url_image={el.image} desc={el.description} sold={el.sold} stock={el.stock}
+                                                                   promo={el.promo} baru={el.baru} pilihan={el.pilihan} popular={el.popular}
+                                                                   best_seller={el.best_seller} special_price={el.special_price} book_id={el.id}
+                                                    />
+                                                </div>
+                                            ))}
+
+                                        </div>
+                                    </div>
+
+                                    <div className="card card-detail mb-2">
+                                        <div className="justify-content-center my-4">
+                                            <h6 className="text-center mb-4">CATEGORIES</h6>
+                                            <div className="card px-4 pt-1">
+                                                <Link to="#">Kategori 1</Link>
+                                                <Link to="#">Kategori 2</Link>
+                                                <Link to="#">Kategori 3</Link>
+                                                <Link to="#">Kategori 4</Link>
+                                                <Link to="#">Kategori 5</Link>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>

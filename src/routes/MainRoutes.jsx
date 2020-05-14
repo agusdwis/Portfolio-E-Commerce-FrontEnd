@@ -25,7 +25,7 @@ const MainRoutes = () => {
                     <Route exact path={'/profile/edit'} component={ProfileEdit} />
                     <Route exact path="/book" component={ProductPage} />
                     <Route path="/book/:category" component={ProductPage} />
-                    <Route path="/produk/:id" component={ProductDetail} />
+                    <Route path="/product/:id" component={ProductDetail} />
                     <Route component={NotMatch} />
                 </Switch>
             </BrowserRouter>
