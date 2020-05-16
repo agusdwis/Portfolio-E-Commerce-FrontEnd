@@ -36,10 +36,10 @@ export const BookSearch = () => {
                                 <div className="form-group">
                                     <select name="product_cat" id="product_cat" className="form-control">
                                         <option value="0">Book Category</option>
-                                        <option className="level-0" value="drama">Drama</option>
+                                        <option className="level-0" value="drama">Fiction</option>
                                         <option className="level-0" value="inspiration">Inspiration
                                         </option>
-                                        <option className="level-0" value="science">Love Story</option>
+                                        <option className="level-0" value="science">Programming</option>
                                         <option className="level-0" value="life-style">Life Style</option>
                                         <option className="level-0" value="business">Business</option>
                                     </select>

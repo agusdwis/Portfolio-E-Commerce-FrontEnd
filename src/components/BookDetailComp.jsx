@@ -1,5 +1,6 @@
 import React, {Fragment} from "react";
 import '../assets/styles/ProductPage.css';
+import '../assets/styles/BookDetailComp.css';
 import ReviewBook from "./ReviewComp";
 
 const BookDetail = (props) => {
@@ -8,51 +9,118 @@ const BookDetail = (props) => {
         <div className="container py-5">
             <div className="card detail-card">
                 <div className="container-fliud">
-                    <div className="wrapper row">
-                        <div className="preview col-md-5">
-                            <div className="card mt-5 d-flex align-items-center">
-                                <div className="tab-pane active" id="pic-1">
-                                    <img width="300" height="350" className="img-fluid"
-                                         src={require('../assets/images/product/book-23-250x333.jpg')}
-                                         sizes="(max-width: 300px) 100vw, 300px" alt="Our Product"/>
-                                </div>
-                            </div>
+
+                    <div className="card">
+                        <div className="row">
+                            <aside className="col-sm-5 border-right">
+                                <article className="gallery-wrap">
+                                    <div className="img-big-wrap">
+                                        <div><a href="#"><img src={props.url_image} alt='Book Image'/></a>
+                                        </div>
+                                    </div>
+
+                                    <div className="img-small-wrap">
+                                        <div className="item-gallery"><img src={props.url_image} alt='#'/></div>
+                                        <div className="item-gallery"><img src={props.url_image} alt='#'/></div>
+                                        <div className="item-gallery"><img src={props.url_image} alt='#'/></div>
+                                        <div className="item-gallery"><img src={props.url_image} alt='#'/></div>
+                                    </div>
+
+                                </article>
+
+                            </aside>
+                            <aside className="col-sm-7">
+                                <article className="card-body p-5">
+                                    <h3 className="title mb-3">{props.title}</h3>
+
+                                    <p className="price-detail-wrap">
+                                        <span className="price h3 text-warning">
+                                            <span className="currency">IDR Rp. </span><span className="num">{props.price}</span>
+                                        </span>
+                                    </p>
+                                    <dl className="item-property">
+                                        <dt>Description</dt>
+                                        <dd><p>{props.desc} </p></dd>
+                                    </dl>
+                                    <dl className="param param-feature">
+                                        <dt>Penulis</dt>
+                                        <dd>{props.penulis}</dd>
+                                    </dl>
+
+                                    <dl className="param param-feature">
+                                        <dt>Penerbit</dt>
+                                        <dd>{props.penerbit}</dd>
+                                    </dl>
+
+                                    <dl className="param param-feature">
+                                        <dt>Sold</dt>
+                                        <dd>{props.sold}</dd>
+                                    </dl>
+
+                                    <dl className="param param-feature">
+                                        <dt>Stock</dt>
+                                        <dd>{props.stock}</dd>
+                                    </dl>
+
+                                    <dl className="param param-feature">
+                                        <dt>Delivery</dt>
+                                        <dd>From Malang, East Java, Indonesia</dd>
+                                    </dl>
+
+
+                                    <hr/>
+                                        <div className="row">
+                                            <div className="col-sm-5">
+                                                <dl className="param param-inline">
+                                                    <dt>Quantity:</dt>
+                                                    <dd>
+                                                        <select className="form-control form-control-sm"
+                                                                style={{width:'70px'}}>
+                                                            <option> 1</option>
+                                                            <option> 2</option>
+                                                            <option> 3</option>
+                                                            <option> 4</option>
+                                                            <option> 5</option>
+                                                        </select>
+                                                    </dd>
+                                                </dl>
+
+                                            </div>
+
+                                            <div className="col-sm-7">
+                                                <dl className="param param-inline">
+                                                    <dt>Assurance:</dt>
+                                                    <dd>
+                                                        <label className="form-check form-check-inline">
+                                                            <input className="form-check-input" type="radio"
+                                                                   name="inlineRadioOptions" id="inlineRadio2"
+                                                                   value="option2"/>
+                                                                <span className="form-check-label">Yes</span>
+                                                        </label>
+                                                        <label className="form-check form-check-inline">
+                                                            <input className="form-check-input" type="radio"
+                                                                   name="inlineRadioOptions" id="inlineRadio2"
+                                                                   value="option2"/>
+                                                                <span className="form-check-label">No</span>
+                                                        </label>
+                                                    </dd>
+                                                </dl>
+
+                                            </div>
+
+                                        </div>
+
+                                        <hr/>
+                                            <a href="#" className="btn btn-lg btn-primary text-uppercase"> Buy now </a>
+                                            <a href="#" className="btn btn-lg btn-outline-primary text-uppercase"><i className="fas fa-shopping-cart"/> Add to cart </a>
+                                </article>
+
+                            </aside>
 
                         </div>
-                        <div className="details col-md-7">
-                            <h3 className="product-title pt-5">{props.title}</h3>
-                            <div className="rating">
-                                <div className="stars">
-                                    <span className="fa fa-star checked"> </span>
-                                    <span className="fa fa-star checked"> </span>
-                                    <span className="fa fa-star checked"> </span>
-                                    <span className="fa fa-star"> </span>
-                                    <span className="fa fa-star"> </span>
-                                </div>
-                                <span className="review-no">41 reviews</span>
-                            </div>
-                            <p className="product-description">
-                                What can you do to save money with online shopping? You may be wondering if finding coupons and sales is time consuming. If you aren’t into that, there are other options. You simply need to heed the tips in this piece and act on them.
-                            </p>
 
-                            <div className="card border-primary mb-3" style={{maxWidth: '18rem'}}>
-                                <div className="card-header d-flex justify-content-between">
-                                    <del><span className="woocommerce-Price-amount amount"><span
-                                        className="woocommerce-Price-currencySymbol">Rp. </span>100.000</span></del>
-
-                                    <ins><span className="woocommerce-Price-amount amount"><span
-                                        className="woocommerce-Price-currencySymbol">Rp. </span>{props.price}</span></ins>
-                                </div>
-                                <div className="card-body">
-                                    <h6 className="card-title text-center">{props.stock} in stock</h6>
-                                    <button type="submit" className="btn btn-primary btn-block">
-                                        <i className="fa fa-plus"/> &nbsp;
-                                        add to cart
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
                     </div>
+
                     <div className="container pt-5">
                         <ul className="nav nav-tabs" id="myTab" role="tablist">
                             <li className="nav-item">

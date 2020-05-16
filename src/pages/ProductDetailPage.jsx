@@ -10,7 +10,7 @@ import BookDetail from "../components/BookDetailComp";
 import {HighlightBook} from "../components/HomePage/HighlightBookComp";
 import FooterComp from "../components/FooterComp";
 import {changeInputUser, closeAlert, doSignOut} from "../stores/actions/userAction";
-import {getBookByID} from "../stores/actions/bookAction";
+import {getBookByID, getPopularProduct, getAllProduct} from "../stores/actions/bookAction";
 import {connect} from "react-redux";
 import Separator from "../components/Separator";
 
@@ -19,9 +19,19 @@ class ProductDetail extends Component {
         const paramId = await this.props.match.params.id;
         console.log(paramId);
         this.props.getBookByID(paramId);
+        this.props.getPopularProduct();
+        this.props.getAllProduct();
     };
+
+    handleClick=(e)=>{
+        e.preventDefault();
+        this.props.history.push("/product/"+ e.target.value);
+    };
+
     render() {
         const el = this.props.one_book;
+        const PopularBooks = this.props.popular_book;
+        const AllBooks = this.props.all_book;
         return (
             <Fragment>
                 <div className="navbar-page">
@@ -50,10 +60,9 @@ class ProductDetail extends Component {
 
                 <div className="detail-produk bg-light">
                     <BookDetail title={el.title} penulis={el.penulis}
-                                   penerbit={el.penerbit} price={el.price} category={el.category}
-                                   url_image={el.image} desc={el.description} sold={el.sold} stock={el.stock}
-                                   promo={el.promo} baru={el.baru} pilihan={el.pilihan} popular={el.popular}
-                                   best_seller={el.best_seller} special_price={el.special_price} book_id={el.id}
+                                penerbit={el.penerbit} price={el.price} category={el.category}
+                                url_image={el.image} desc={el.description} sold={el.sold} stock={el.stock}
+                                promo={el.promo} discount={el.discount} limited={el.limited} status={el.status} book_id={el.id}
                     />
                 </div>
 
@@ -65,18 +74,18 @@ class ProductDetail extends Component {
                             <div className="col-md-12 col-sm-12 pt-5">
                                 <h1 className="text-center mb-5 text-light">Produk Rekomendasi</h1>
                                 <div className="row">
-                                    <div className="col-md-3 col-sm-12 mb-4">
-                                        <HighlightBook/>
+                                    {PopularBooks.slice(0,4).map((el, index) => (
+                                    <div key={index} className="col-md-3 col-sm-12 mb-4">
+                                        <HighlightBook title={el.title} penulis={el.penulis}
+                                                       penerbit={el.penerbit} price={el.price} category={el.category}
+                                                       url_image={el.image} desc={el.description} sold={el.sold} stock={el.stock}
+                                                       promo={el.promo} discount={el.discount} limited={el.limited} status={el.status} book_id={el.id}
+                                        />
+                                        <div className="button d-flex justify-content-center">
+                                            <button onClick={e => this.handleClick(e)} value={el.id} type="button" className="btn btn-primary">Detail</button>
+                                        </div>
                                     </div>
-                                    <div className="col-md-3 col-sm-12 mb-4">
-                                        <HighlightBook/>
-                                    </div>
-                                    <div className="col-md-3 col-sm-12 mb-4">
-                                        <HighlightBook/>
-                                    </div>
-                                    <div className="col-md-3 col-sm-12 mb-4">
-                                        <HighlightBook/>
-                                    </div>
+                                    ))}
                                 </div>
                             </div>
                         </div>
@@ -91,18 +100,18 @@ class ProductDetail extends Component {
                             <div className="col-md-12 col-sm-12 pt-5">
                                 <h1 className="text-center mb-5 text-dark">Produk Terkait</h1>
                                 <div className="row">
-                                    <div className="col-md-3 col-sm-12 mb-4">
-                                        <HighlightBook/>
+                                    {AllBooks.slice(0,4).map((el, index) => (
+                                    <div key={index} className="col-md-3 col-sm-12 mb-4">
+                                        <HighlightBook title={el.title} penulis={el.penulis}
+                                                       penerbit={el.penerbit} price={el.price} category={el.category}
+                                                       url_image={el.image} desc={el.description} sold={el.sold} stock={el.stock}
+                                                       promo={el.promo} discount={el.discount} limited={el.limited} status={el.status} book_id={el.id}
+                                        />
+                                        <div className="button d-flex justify-content-center">
+                                            <button onClick={e => this.handleClick(e)} value={el.id} type="button" className="btn btn-primary">Detail</button>
+                                        </div>
                                     </div>
-                                    <div className="col-md-3 col-sm-12 mb-4">
-                                        <HighlightBook/>
-                                    </div>
-                                    <div className="col-md-3 col-sm-12 mb-4">
-                                        <HighlightBook/>
-                                    </div>
-                                    <div className="col-md-3 col-sm-12 mb-4">
-                                        <HighlightBook/>
-                                    </div>
+                                        ))}
                                 </div>
                             </div>
                         </div>
@@ -132,7 +141,7 @@ const mapDispatchToProps = {
     changeInput: (e) => changeInputUser(e),
     closeAlert, doSignOut,
 
-    getBookByID
+    getBookByID, getPopularProduct, getAllProduct
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(ProductDetail);
