@@ -2,7 +2,7 @@ import React, {Fragment} from "react";
 import '../assets/styles/ProductPage.css';
 import ReviewBook from "./ReviewComp";
 
-const BookDetail = () => {
+const BookDetail = (props) => {
     return(
     <Fragment>
         <div className="container py-5">
@@ -20,7 +20,7 @@ const BookDetail = () => {
 
                         </div>
                         <div className="details col-md-7">
-                            <h3 className="product-title pt-5">Judul Buku Bacaan 1</h3>
+                            <h3 className="product-title pt-5">{props.title}</h3>
                             <div className="rating">
                                 <div className="stars">
                                     <span className="fa fa-star checked"> </span>
@@ -41,10 +41,10 @@ const BookDetail = () => {
                                         className="woocommerce-Price-currencySymbol">Rp. </span>100.000</span></del>
 
                                     <ins><span className="woocommerce-Price-amount amount"><span
-                                        className="woocommerce-Price-currencySymbol">Rp. </span>90.000</span></ins>
+                                        className="woocommerce-Price-currencySymbol">Rp. </span>{props.price}</span></ins>
                                 </div>
                                 <div className="card-body">
-                                    <h6 className="card-title text-center">280 in stock</h6>
+                                    <h6 className="card-title text-center">{props.stock} in stock</h6>
                                     <button type="submit" className="btn btn-primary btn-block">
                                         <i className="fa fa-plus"/> &nbsp;
                                         add to cart
@@ -57,7 +57,7 @@ const BookDetail = () => {
                         <ul className="nav nav-tabs" id="myTab" role="tablist">
                             <li className="nav-item">
                                 <a className="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab"
-                                   aria-controls="home" aria-selected="true">Description</a>
+                                   aria-controls="home" aria-selected="true">Deskripsi</a>
                             </li>
                             <li className="nav-item">
                                 <a className="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab"
@@ -67,7 +67,7 @@ const BookDetail = () => {
                         <div className="tab-content mb-5" id="myTabContent">
                             <div className="tab-pane fade show active" id="home" role="tabpanel"
                                  aria-labelledby="home-tab">
-                                <p className='p-3'>Deskripsi buku singkat</p>
+                                <p className='p-3'>{props.desc}</p>
                             </div>
                             <div className="tab-pane fade" id="profile" role="tabpanel"
                                  aria-labelledby="profile-tab">

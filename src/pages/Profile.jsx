@@ -9,7 +9,7 @@ import {Link, Redirect} from "react-router-dom";
 class Profile extends Component{
     componentDidMount = async () => {
         if (this.props.login){
-            localStorage.setItem("is_login", true)
+            localStorage.setItem("is_login", true);
         }
         this.props.getProfile(localStorage.getItem("token"));
 
@@ -31,16 +31,16 @@ class Profile extends Component{
                                 <div className="col-md-4">
                                     <div className="profile-img">
                                         <img
-                                            src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS52y5aInsxSm31CvHOFHWujqUx_wWTS9iM6s7BAm21oEN_RiGoog"
+                                            src={this.props.info.avatar}
                                             alt="My Profile"/>
                                     </div>
 
                                     <div className="profile-work">
                                         <p>Status</p>
-                                        <a href=".">Website Link</a><br/>
+                                        <a href=".">User</a><br/>
 
                                         <p>Address</p>
-                                        <a href=".">Web Designer</a><br/>
+                                        <a href=".">{this.props.info.address}</a><br/>
 
                                     </div>
                                 </div>
@@ -174,7 +174,8 @@ const mapStateToProps = (state) => {
     return {
         login: state.user.is_login,
         visible: state.user.visible,
-        info: state.user.infos
+        info: state.user.infos,
+        data: state.user
     };
 };
 

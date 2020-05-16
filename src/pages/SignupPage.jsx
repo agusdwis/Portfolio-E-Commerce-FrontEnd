@@ -90,6 +90,7 @@ const mapStateToProps = (state) => {
         data: state.user,
         login: state.user.is_login,
         visible: state.user.visible,
+        info: state.user.infos,
     };
 };
 

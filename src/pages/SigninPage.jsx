@@ -76,6 +76,7 @@ class SignIn extends Component {
 const mapStateToProps = (state) => {
     return {
         data: state.user,
+        info: state.user.infos,
         login: state.user.is_login,
         visible: state.user.visible
     };

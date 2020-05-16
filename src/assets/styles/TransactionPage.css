@@ -1,0 +1,40 @@
+.page #content .entry, .single #content .entry, .error404 #content .entry {
+    margin: 0;
+    padding-right: 0;
+    padding-left: 0;
+    background: none;
+}
+
+.entry {
+    position: relative;
+    margin-bottom: 30px;
+    padding: 45px 50px 25px;
+    border-radius: 6px;
+    background: #ffffff;
+}
+
+.woocommerce table.shop_table thead tr th {
+    padding: 10px;
+}
+
+.woocommerce table.shop_table th {
+    font-weight: 700;
+    padding: 9px 12px;
+    line-height: 1.5em;
+}
+
+th {
+    text-align: left;
+}
+
+.woocommerce #content table.cart img, .woocommerce table.cart img, .woocommerce-page #content table.cart img, .woocommerce-page table.cart img {
+    height: auto;
+}
+
+.woocommerce-cart table.shop_table .cart_item .product-thumbnail a img {
+    width: 50px;
+}
+
+.woocommerce table.shop_table tr td {
+    padding: 10px;
+}

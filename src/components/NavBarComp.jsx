@@ -10,10 +10,13 @@ import Avatar from "@material-ui/core/Avatar";
 const NavBar = (props, postLogout) => {
     postLogout = async () => {
         localStorage.removeItem('is_login');
+        localStorage.removeItem('avatar');
+        localStorage.removeItem('token');
         await props.doSignOut();
     };
 
     const login = localStorage.getItem('is_login');
+    const avatar = localStorage.getItem('avatar');
     return(
         <Fragment>
             <nav className="navbar navbar-expand-lg navbar-dark scrolling-navbar ">
@@ -27,12 +30,11 @@ const NavBar = (props, postLogout) => {
                             <div className="nav-item dropdown">
                                 <Link to="#" className="nav-link dropdown-toggle" data-toggle="dropdown">KATEGORI</Link>
                                 <div className="dropdown-menu">
-                                    <Link to="#" className="dropdown-item">Kategori A</Link>
-                                    <Link to="#" className="dropdown-item">Kategori B</Link>
-                                    <Link to="#" className="dropdown-item">Kategori C</Link>
-                                    <Link to="#" className="dropdown-item">Kategori D</Link>
-                                    <Link to="#" className="dropdown-item">Kategori E</Link>
-                                    <Link to="#" className="dropdown-item">Kategori F</Link>
+                                    <Link to="#" className="dropdown-item">Fiction</Link>
+                                    <Link to="#" className="dropdown-item">Inspiration</Link>
+                                    <Link to="#" className="dropdown-item">Programming</Link>
+                                    <Link to="#" className="dropdown-item">Life Style</Link>
+                                    <Link to="#" className="dropdown-item">Bussiness</Link>
                                 </div>
                             </div>
                         </div>
@@ -41,7 +43,7 @@ const NavBar = (props, postLogout) => {
 
                         {props.login || login?
                             <div className="navbar-nav mx-1">
-                                <Link to={'/profile'}><Avatar alt="Remy Sharp" src={require('../assets/images/avatar/avatar')}/></Link>
+                                <Link to={'/profile'}><Avatar alt="Remy Sharp" src={avatar}/></Link>
                                 <Link onClick={()=>postLogout()} to="#" className="nav-item nav-link">KELUAR</Link>
                             </div>
                             :
@@ -51,8 +53,8 @@ const NavBar = (props, postLogout) => {
                             </div>
                         }
                         <div className="navbar-nav">
-                            <Link to="#" className="nav-item nav-link">
-                                <Badge badgeContent={10} color="error">
+                            <Link to="/cart" className="nav-item nav-link">
+                                <Badge badgeContent={100} color="error">
                                     <ShoppingCartIcon />
                                 </Badge>
                             </Link>

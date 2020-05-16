@@ -38,7 +38,7 @@ export const doRegister = () => {
     };
 };
 
-export const doEditProfile = () => {
+export const doEditProfile = (token) => {
     return async (dispatch, getState) => {
         const bodyRequest= {
             username: getState().user.namaUser,
@@ -46,6 +46,8 @@ export const doEditProfile = () => {
             password: getState().user.passwordUser,
             address: getState().user.addressUser,
             contact: getState().user.contactUser,
+            account_number: getState().user.accountNumberUser,
+            avatar: getState().user.avatarUser
         };
 
         const myJSON = JSON.stringify(bodyRequest);
@@ -53,7 +55,7 @@ export const doEditProfile = () => {
         await axios
             .put("http://localhost:5000/users/info", myJSON, {
                 headers: {
-                    'Authorization':'Bearer ' + getState().user.token,
+                    'Authorization':'Bearer ' + token,
                     "Content-Type": "application/json; charset=utf-8",
                     Accept: "application/json; charset=utf-8",
 
@@ -111,6 +113,8 @@ export const getProfile = (token) => {
                 dispatch({
                     type: "SUCCESS_GET_PROFILE",
                     payload: response.data});
+
+                localStorage.setItem("avatar", response.data.avatar)
 
             })
             .catch(function (error) {

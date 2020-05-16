@@ -4,8 +4,9 @@ import FooterComp from "../components/FooterComp";
 import HomeBanner from "../components/HomePage/HomeBannerComp";
 import {HighlightBook} from "../components/HomePage/HighlightBookComp";
 import {changeInputUser, closeAlert, doSignOut} from "../stores/actions/userAction";
-import {getAllProduct, getPopularProduct, getNewProduct, getPromoProduct} from "../stores/actions/bookAction";
+import {getAllProduct, getPopularProduct, getNewProduct, getPromoProduct, getLimitedProduct} from "../stores/actions/bookAction";
 import {connect} from "react-redux";
+import Separator from "../components/Separator";
 
 class HomePage extends Component {
     componentDidMount= async () => {
@@ -13,6 +14,7 @@ class HomePage extends Component {
         this.props.getPopularProduct();
         this.props.getNewProduct();
         this.props.getPromoProduct();
+        this.props.getLimitedProduct();
 
     };
 
@@ -31,6 +33,7 @@ class HomePage extends Component {
         const PopularBook = this.props.popular_book;
         const NewBook = this.props.new_book;
         const PromoBook = this.props.promo_book;
+        const LimitedBook = this.props.limited_book;
         const AllBook = this.props.all_book;
         return (
             <Fragment>
@@ -39,6 +42,7 @@ class HomePage extends Component {
 
                 {/*Home Banner*/}
                 <HomeBanner/>
+                <Separator/>
 
                 {/*Popular Book*/}
                 <div className="container col-sm-12 popular-container">
@@ -53,8 +57,7 @@ class HomePage extends Component {
                                         <HighlightBook title={el.title} penulis={el.penulis}
                                                 penerbit={el.penerbit} price={el.price} category={el.category}
                                                 url_image={el.image} desc={el.description} sold={el.sold} stock={el.stock}
-                                                promo={el.promo} baru={el.baru} pilihan={el.pilihan} popular={el.popular}
-                                                best_seller={el.best_seller} special_price={el.special_price} book_id={el.id}
+                                                promo={el.promo} discount={el.discount} limited={el.limited} status={el.status} book_id={el.id}
                                         />
                                         <div className="button d-flex justify-content-center">
                                             <button onClick={e => this.handleClick(e)} value={el.id} type="button" className="btn btn-primary">Detail</button>
@@ -65,6 +68,7 @@ class HomePage extends Component {
                         </div>
                     </div>
                 </div>
+                <Separator/>
 
                 {/*New Book*/}
                 <div className="container col-sm-12 new-container">
@@ -79,8 +83,7 @@ class HomePage extends Component {
                                         <HighlightBook title={el.title} penulis={el.penulis}
                                                        penerbit={el.penerbit} price={el.price} category={el.category}
                                                        url_image={el.image} desc={el.description} sold={el.sold} stock={el.stock}
-                                                       promo={el.promo} baru={el.baru} pilihan={el.pilihan} popular={el.popular}
-                                                       best_seller={el.best_seller} special_price={el.special_price} book_id={el.id}
+                                                       promo={el.promo} discount={el.discount} limited={el.limited} status={el.status} book_id={el.id}
                                         />
                                         <div className="button d-flex justify-content-center">
                                             <button onClick={e => this.handleClick(e)} value={el.id} type="button" className="btn btn-primary">Detail</button>
@@ -91,6 +94,7 @@ class HomePage extends Component {
                         </div>
                     </div>
                 </div>
+                <Separator/>
 
                 {/*Best Seller Book*/}
                 <div className="container col-sm-12 best_seller-container">
@@ -105,8 +109,7 @@ class HomePage extends Component {
                                         <HighlightBook title={el.title} penulis={el.penulis}
                                                        penerbit={el.penerbit} price={el.price} category={el.category}
                                                        url_image={el.image} desc={el.description} sold={el.sold} stock={el.stock}
-                                                       promo={el.promo} baru={el.baru} pilihan={el.pilihan} popular={el.popular}
-                                                       best_seller={el.best_seller} special_price={el.special_price} book_id={el.id}
+                                                       promo={el.promo} discount={el.discount} limited={el.limited} status={el.status} book_id={el.id}
                                         />
                                         <div className="button d-flex justify-content-center">
                                             <button onClick={e => this.handleClick(e)} value={el.id} type="button" className="btn btn-primary">Detail</button>
@@ -117,6 +120,7 @@ class HomePage extends Component {
                         </div>
                     </div>
                 </div>
+                <Separator/>
 
                 {/*Promo Book*/}
                 <div className="container col-sm-12 promo-container">
@@ -131,8 +135,33 @@ class HomePage extends Component {
                                         <HighlightBook {...this.props} title={el.title} penulis={el.penulis}
                                                        penerbit={el.penerbit} price={el.price} category={el.category}
                                                        url_image={el.image} desc={el.description} sold={el.sold} stock={el.stock}
-                                                       promo={el.promo} baru={el.baru} pilihan={el.pilihan} popular={el.popular}
-                                                       best_seller={el.best_seller} special_price={el.special_price} book_id={el.id}
+                                                       promo={el.promo} discount={el.discount} limited={el.limited} status={el.status} book_id={el.id}
+                                        />
+                                        <div className="button d-flex justify-content-center">
+                                            <button onClick={e => this.handleClick(e)} value={el.id} type="button" className="btn btn-primary">Detail</button>
+                                        </div>
+                                    </div>
+                                ))}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <Separator/>
+
+                {/*Promo Book*/}
+                <div className="container col-sm-12 promo-container">
+                    <div className="column-inner">
+                        <div className="divider-inner pt-3">
+                            <h3 className="toko-section-title text-center">Limited Book</h3>
+                        </div>
+                        <div className="container mt-3">
+                            <div className="row">
+                                {LimitedBook.slice(0,4).map((el, index) => (
+                                    <div key={index} className="col-sm-3 col-md-3 card-cascade mb-5 pb-5 card-product">
+                                        <HighlightBook {...this.props} title={el.title} penulis={el.penulis}
+                                                       penerbit={el.penerbit} price={el.price} category={el.category}
+                                                       url_image={el.image} desc={el.description} sold={el.sold} stock={el.stock}
+                                                       promo={el.promo} discount={el.discount} limited={el.limited} status={el.status} book_id={el.id}
                                         />
                                         <div className="button d-flex justify-content-center">
                                             <button onClick={e => this.handleClick(e)} value={el.id} type="button" className="btn btn-primary">Detail</button>
@@ -159,6 +188,8 @@ const mapStateToProps = (state) => {
         popular_book: state.book.listPopular,
         new_book: state.book.listNew,
         promo_book: state.book.listPromo,
+        limited_book: state.book.listLimited,
+        info: state.user.infos,
     };
 };
 
@@ -166,7 +197,7 @@ const mapDispatchToProps = {
     changeInput: (e) => changeInputUser(e),
     closeAlert, doSignOut,
 
-    getAllProduct, getPopularProduct, getNewProduct, getPromoProduct,
+    getAllProduct, getPopularProduct, getNewProduct, getPromoProduct, getLimitedProduct,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(HomePage);

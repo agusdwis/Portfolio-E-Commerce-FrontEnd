@@ -9,7 +9,8 @@ const CardCategory = (props) => {
                     <div className="row mb-2">
                         <div className="col-4">
                             <img width="70" height="100"
-                                src={require('../assets/images/product/book01.jpeg')} alt="Book"/>
+                                // src={require('../assets/images/product/book01.jpeg')} alt="Book"/>
+                                src={props.url_image} />
                         </div>
                         <div className="col-8">
                             <p>{props.title}</p>

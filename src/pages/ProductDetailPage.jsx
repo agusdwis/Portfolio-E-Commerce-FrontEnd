@@ -9,14 +9,23 @@ import '../assets/styles/ProductPage.css';
 import BookDetail from "../components/BookDetailComp";
 import {HighlightBook} from "../components/HomePage/HighlightBookComp";
 import FooterComp from "../components/FooterComp";
+import {changeInputUser, closeAlert, doSignOut} from "../stores/actions/userAction";
+import {getBookByID} from "../stores/actions/bookAction";
+import {connect} from "react-redux";
+import Separator from "../components/Separator";
 
 class ProductDetail extends Component {
+    componentDidMount = async() => {
+        const paramId = await this.props.match.params.id;
+        console.log(paramId);
+        this.props.getBookByID(paramId);
+    };
     render() {
-        console.log(this.props.match.params.id);
+        const el = this.props.one_book;
         return (
             <Fragment>
                 <div className="navbar-page">
-                    <NavBar/>
+                    <NavBar{...this.props}/>
                 </div>
 
                 <div className="product-page wrapper">
@@ -30,7 +39,7 @@ class ProductDetail extends Component {
                                 <Link color="inherit" to="/book">
                                     Produk
                                 </Link>
-                                <Typography color="textPrimary">Nama Produk</Typography>
+                                <Typography color="textPrimary">{el.title}</Typography>
 
                             </Breadcrumbs>
                         </div>
@@ -39,9 +48,16 @@ class ProductDetail extends Component {
 
                 <BookSearch/>
 
-                <div className="detail-produk bg-success">
-                    <BookDetail {...this.props}/>
+                <div className="detail-produk bg-light">
+                    <BookDetail title={el.title} penulis={el.penulis}
+                                   penerbit={el.penerbit} price={el.price} category={el.category}
+                                   url_image={el.image} desc={el.description} sold={el.sold} stock={el.stock}
+                                   promo={el.promo} baru={el.baru} pilihan={el.pilihan} popular={el.popular}
+                                   best_seller={el.best_seller} special_price={el.special_price} book_id={el.id}
+                    />
                 </div>
+
+                <Separator/>
 
                 <div className="suggested-product bg-dark">
                     <div className="container pb-5">
@@ -66,6 +82,8 @@ class ProductDetail extends Component {
                         </div>
                     </div>
                 </div>
+
+                <Separator/>
 
                 <div className="related-product bg-light">
                     <div className="container pb-5">
@@ -97,4 +115,24 @@ class ProductDetail extends Component {
     }
 }
 
-export default ProductDetail;
+const mapStateToProps = (state) => {
+    return {
+        login: state.user.is_login,
+        visible: state.user.visible,
+        all_book: state.book.listBooks,
+        popular_book: state.book.listPopular,
+        new_book: state.book.listNew,
+        promo_book: state.book.listPromo,
+        one_book: state.book.oneBook,
+        info: state.user.infos,
+    };
+};
+
+const mapDispatchToProps = {
+    changeInput: (e) => changeInputUser(e),
+    closeAlert, doSignOut,
+
+    getBookByID
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(ProductDetail);

@@ -1,12 +1,12 @@
 import React, {Component, Fragment} from "react";
 import NavBar from "./NavBarComp";
-import {Link} from "react-router-dom";
 import {changeInputUser, closeAlert, doRegister, doEditProfile, doSignOut} from "../stores/actions/userAction";
 import {connect} from "react-redux";
 
 class ProfileEditPage extends Component {
     postEditProfile = async () => {
-        await this.props.doEditProfile();
+        const token = localStorage.getItem('token');
+        await this.props.doEditProfile(token);
 
         if (this.props.data.status_edit){
             this.props.history.push('/profile');
@@ -40,7 +40,21 @@ class ProfileEditPage extends Component {
                                         <div className="md-form">
                                             <i className="fas fa-phone prefix white-text"> </i>
                                             <input onChange={(e) => this.props.changeInput(e)} type="text"
-                                                   name="contactUser" id="orangeForm-email" placeholder="cantact"
+                                                   name="contactUser" id="orangeForm-email" placeholder="contact"
+                                                   className="form-control" required/>
+                                        </div>
+                                        <br/>
+                                        <div className="md-form">
+                                            <i className="fas fa-bank prefix white-text"> </i>
+                                            <input onChange={(e) => this.props.changeInput(e)} type="text"
+                                                   name="accountNumberUser" id="orangeForm-email" placeholder="account number"
+                                                   className="form-control" required/>
+                                        </div>
+                                        <br/>
+                                        <div className="md-form">
+                                            <i className="fas fa-file-image-o prefix white-text"> </i>
+                                            <input onChange={(e) => this.props.changeInput(e)} type="text"
+                                                   name="avatarUser" id="orangeForm-email" placeholder="user avatar"
                                                    className="form-control" required/>
                                         </div>
                                         <br/>
@@ -66,6 +80,7 @@ const mapStateToProps = (state) => {
         data: state.user,
         login: state.user.is_login,
         visible: state.user.visible,
+        info: state.user.infos
     };
 };
 

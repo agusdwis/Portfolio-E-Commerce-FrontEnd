@@ -12,6 +12,7 @@ import ProductDetail from "../pages/ProductDetailPage";
 import NotMatch from "../pages/NotMatch";
 import Profile from "../pages/Profile";
 import ProfileEdit from "../components/ProfileComp";
+import CartsPage from "../pages/TransactionPage";
 
 const MainRoutes = () => {
     return(
@@ -25,7 +26,8 @@ const MainRoutes = () => {
                     <Route exact path={'/profile/edit'} component={ProfileEdit} />
                     <Route exact path="/book" component={ProductPage} />
                     <Route path="/book/:category" component={ProductPage} />
-                    <Route path="/product/:id" component={ProductDetail} />
+                    <Route exact path="/product/:id" component={ProductDetail} />
+                    <Route exact path="/cart" component={CartsPage} />
                     <Route component={NotMatch} />
                 </Switch>
             </BrowserRouter>

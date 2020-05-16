@@ -20,10 +20,6 @@ const HomeBanner = () => {
                     </div>
                 </div>
             </div>
-
-            <div id="go-shop" className="container mt-3">
-                <BookSearch/>
-            </div>
         </Fragment>
     )
 };

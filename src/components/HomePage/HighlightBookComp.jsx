@@ -4,31 +4,27 @@ import {Link} from 'react-router-dom';
 //import static files
 import '../../assets/styles/HiglightBookComp.css';
 
-export const HighlightBook = (props, handleClick) => {
-    handleClick=(e)=>{
-        e.preventDefault();
-        this.props.history.push("/product/"+ e.target.value);
-    };
+export const HighlightBook = (props) => {
     return(
 
         <Fragment>
-            {/*<div className="col-sm-3 col-md-3 card-cascade mb-3">*/}
-                <div className="product-inner h-100 card pt-2 pb-5">
-                    <Link to="." ><figure className="product-image-box">
+                <div className="product-inner h-100 card pt-2 pb-5 mb-1">
+                    <Link to="#" ><figure className="product-image-box">
                         <span className="onsale">Sale!</span>
-                        <img width="250" height="333"
-                             src={require('../../assets/images/product/book-23-250x333.jpg')}
-                            // src={props.url_image}
+                        <img width="250"
+                            src={props.url_image}
                              className="img-fluid attachment-woocommerce_thumbnail size-woocommerce_thumbnail"
                              alt="Book Image Not Found"
                              sizes="(max-width: 250px) 100vw, 250px"/></figure></Link>
 
-                    <div className="product-price-box clearfix" style={{height: "15vmin"}}><h2
-                        className="product__title">{props.title}</h2>
-                        <span className="person-name vcard">Kobars</span>
+                    <div className="product-price-box clearfix" style={{height: "15vmin"}}>
+                        <h2 className="product__title">{props.title}</h2>
+                        <br/>
+                        <span className="person-name vcard"><b>{props.penulis}</b></span>
+                        <span className="person-name vcard">{props.penerbit}</span>
                         <span className="price"><del><span
                             className="Price-amount amount"><span
-                            className="Price-currencySymbol">Rp. </span>100000</span></del> <ins><span
+                            className="Price-currencySymbol">Rp. </span>0</span></del> <ins><span
                             className="Price-amount amount"><span
                             className="Price-currencySymbol">Rp. </span>{props.price}</span></ins></span>
                     </div>

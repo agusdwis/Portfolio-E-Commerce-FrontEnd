@@ -5,6 +5,8 @@ const initialState = {
     email: "",
     contact: "",
     address: "",
+    accountNumber:"",
+    avatarURL:"",
     token: "",
     status: false,
     status_edit: false,
@@ -15,6 +17,8 @@ const initialState = {
     fullnameUser:"",
     addressUser: "",
     contactUser: "",
+    accountNumberUser:"",
+    avatarUser:"",
 
     is_login: false,
     visible: false,
@@ -62,6 +66,8 @@ export default function userReducer(userState = initialState, action) {
                 email: action.payload.email,
                 contact: action.payload.contact,
                 address: action.payload.address,
+                avatarURL: action.payload.avatar,
+                accountNumber: action.payload.account_number,
                 status_edit: true
             };
         case "ERROR_REGISTER":

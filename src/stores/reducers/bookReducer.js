@@ -3,6 +3,8 @@ const initialState = {
     listPopular: [],
     listNew: [],
     listPromo: [],
+    listLimited:[],
+    oneBook:[]
 };
 
 export default function bookReducer(bookState = initialState, action) {
@@ -27,6 +29,13 @@ export default function bookReducer(bookState = initialState, action) {
                 ...bookState,
                 listPromo: action.payload
             };
+        case "SUCCESS_GET_LIMITED_BOOKS":
+            return {
+                ...bookState,
+                listLimited: action.payload
+            };
+        case "SUCCESS_GET_ONE_BOOK":
+            return { ...bookState,  oneBook: action.payload};
 
         default:
             return bookState;

@@ -26,39 +26,26 @@ export const BookSearch = () => {
                 <div className="container">
                     <form action="/">
                         <div className="row">
-                            <div className="col-sm-6 col-md-3">
+                            <div className="col-sm-6 col-md-4">
                                 <div className="form-group">
                                     <input name="search" value="" type="text" className="form-control" id="keyword"
                                            placeholder="Book Title"/>
                                 </div>
                             </div>
-                            <div className="col-sm-6 col-md-3">
+                            <div className="col-sm-6 col-md-4">
                                 <div className="form-group">
                                     <select name="product_cat" id="product_cat" className="form-control">
                                         <option value="0">Book Category</option>
                                         <option className="level-0" value="drama">Drama</option>
-                                        <option className="level-1" value="inspiration">&nbsp;&nbsp;&nbsp;Inspiration
+                                        <option className="level-0" value="inspiration">Inspiration
                                         </option>
-                                        <option className="level-1" value="love-story">&nbsp;&nbsp;&nbsp;Love Story</option>
+                                        <option className="level-0" value="science">Love Story</option>
                                         <option className="level-0" value="life-style">Life Style</option>
-                                        <option className="level-1" value="business">&nbsp;&nbsp;&nbsp;Business</option>
-                                        <option className="level-1" value="culture">&nbsp;&nbsp;&nbsp;Culture</option>
-                                        <option className="level-0" value="science">Science</option>
+                                        <option className="level-0" value="business">Business</option>
                                     </select>
                                 </div>
                             </div>
-                            <div className="col-sm-6 col-md-3">
-                                <div className="form-group">
-                                    <select name="book_author" id="book_author" className="form-control">
-                                        <option value="0">Book Author</option>
-                                        <option className="level-0" value="atkia">Atkia</option>
-                                        <option className="level-0" value="brian-owell">Brian O’Well</option>
-                                        <option className="level-0" value="saifudin-a">Saifudin A.</option>
-                                        <option className="level-0" value="sarfaraz">Sarfaraz</option>
-                                    </select>
-                                </div>
-                            </div>
-                            <div className="col-sm-6 col-md-3">
+                            <div className="col-sm-6 col-md-4">
                                 <div className="form-group">
                                     <input type="hidden" name="post_type" value="product"/>
                                         <button type="submit" className="btn btn-primary btn-block">
