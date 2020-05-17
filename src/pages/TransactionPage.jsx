@@ -138,8 +138,7 @@ class CartsPage extends Component {
                                                 <h5 className="font-weight-bold">$400.00</h5>
                                             </li>
                                         </ul>
-                                        <Link to="/checkout" className="btn btn-dark rounded-pill py-2 btn-block">Procceed
-                                            to checkout</Link>
+                                        <Link to="/checkout" className="btn btn-dark rounded-pill py-2 btn-block">Checkout</Link>
                                     </div>
                                 </div>
                             </div>
