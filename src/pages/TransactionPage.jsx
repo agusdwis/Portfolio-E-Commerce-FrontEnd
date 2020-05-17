@@ -5,12 +5,31 @@ import {Link} from "react-router-dom";
 import Typography from "@material-ui/core/Typography";
 import {changeInputUser, closeAlert, doSignOut} from "../stores/actions/userAction";
 import {getPopularProduct} from "../stores/actions/bookAction";
+import {doGetTransaction, doDeleteTransaction} from "../stores/actions/transactionAction";
 import {connect} from "react-redux";
-import '../assets/styles/TransactionPage.css';
 import FooterComp from "../components/FooterComp";
+import TransDetailcomp from "../components/TransactionDetailComp";
+
+import '../assets/styles/TransactionPage.css';
+
 
 class CartsPage extends Component {
+    componentDidMount = async () => {
+        this.props.doGetTransaction();
+    };
+
+    // componentDidUpdate = () => {
+    //     this.props.doGetTransaction();
+    // };
+
     render() {
+        const transDetail = this.props.trans_detail;
+        const is_login = localStorage.getItem('is_login');
+
+        if (!this.props.login && !is_login){
+            this.props.history.push('/')
+        }
+
         return (
             <Fragment>
                 <NavBar {...this.props}/>
@@ -56,27 +75,17 @@ class CartsPage extends Component {
                                             </thead>
                                             <tbody>
 
-                                            <tr>
-                                                <th scope="row" className="border-0">
-                                                    <div className="p-2">
-                                                        <img
-                                                            src="https://res.cloudinary.com/mhmd/image/upload/v1556670479/product-1_zrifhn.jpg"
-                                                            alt="" width="70"
-                                                            className="img-fluid rounded shadow-sm"/>
-                                                            <div className="ml-3 d-inline-block align-middle">
-                                                                <h5 className="mb-0"><a href="#"
-                                                                                        className="text-dark d-inline-block align-middle">Timex
-                                                                    Unisex Originals</a></h5><span
-                                                                className="text-muted font-weight-normal font-italic d-block">Category: Watches</span>
-                                                            </div>
-                                                    </div>
-                                                </th>
-                                                <td className="border-0 align-middle"><strong>$79.00</strong>
-                                                </td>
-                                                <td className="border-0 align-middle"><strong>3</strong></td>
-                                                <td className="border-0 align-middle">
-                                                    <a href="#" className="text-dark"><i className="fa fa-trash"/></a></td>
-                                            </tr>
+                                            {transDetail.map((el, index) => (
+                                            <TransDetailcomp key={index} title={el.book_id.title}
+                                                             category={el.book_id.category}
+                                                             price={el.price}
+                                                             qty={el.qty}
+                                                             book_id={el.id}
+
+                                                             deleteCart={(e) => this.props.doDeleteTransaction(e)}
+                                            />
+                                            ))}
+
                                             </tbody>
                                         </table>
                                     </div>
@@ -125,17 +134,17 @@ class CartsPage extends Component {
                                         <ul className="list-unstyled mb-4">
                                             <li className="d-flex justify-content-between py-3 border-bottom">
                                                 <strong className="text-muted">Order
-                                                    Subtotal </strong><strong>$390.00</strong></li>
+                                                    Subtotal </strong><strong>Rp. {this.props.trans.total_price}</strong></li>
                                             <li className="d-flex justify-content-between py-3 border-bottom">
                                                 <strong className="text-muted">Shipping and
-                                                    handling</strong><strong>$10.00</strong></li>
+                                                    handling</strong><strong>Rp. 20000</strong></li>
                                             <li className="d-flex justify-content-between py-3 border-bottom">
                                                 <strong
-                                                    className="text-muted">Tax</strong><strong>$0.00</strong>
+                                                    className="text-muted">Tax</strong><strong>Rp. 0</strong>
                                             </li>
                                             <li className="d-flex justify-content-between py-3 border-bottom">
                                                 <strong className="text-muted">Total</strong>
-                                                <h5 className="font-weight-bold">$400.00</h5>
+                                                <h5 className="font-weight-bold">Rp. {this.props.trans.total_price + 20000}</h5>
                                             </li>
                                         </ul>
                                         <Link to="/checkout" className="btn btn-dark rounded-pill py-2 btn-block">Checkout</Link>
@@ -161,6 +170,8 @@ const mapStateToProps = (state) => {
         popular_book: state.book.listPopular,
         new_book: state.book.listNew,
         promo_book: state.book.listPromo,
+        trans: state.transaction,
+        trans_detail: state.transaction.transaction_detail
     };
 };
 
@@ -168,7 +179,7 @@ const mapDispatchToProps = {
     changeInput: (e) => changeInputUser(e),
     closeAlert, doSignOut,
 
-    getPopularProduct
+    getPopularProduct, doGetTransaction, doDeleteTransaction
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(CartsPage);

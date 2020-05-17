@@ -2,8 +2,15 @@ import React, {Fragment} from "react";
 import '../assets/styles/ProductPage.css';
 import '../assets/styles/BookDetailComp.css';
 import ReviewBook from "./ReviewComp";
+import {Link} from "react-router-dom";
 
-const BookDetail = (props) => {
+
+const BookDetail = (props, handleClick) => {
+    handleClick=(e)=>{
+        e.preventDefault();
+        props.postCart(e.target.value);
+    };
+
     return(
     <Fragment>
         <div className="container py-5">
@@ -14,8 +21,8 @@ const BookDetail = (props) => {
                         <div className="row">
                             <aside className="col-sm-5 border-right">
                                 <article className="gallery-wrap">
-                                    <div className="img-big-wrap">
-                                        <div><a href="#"><img src={props.url_image} alt='Book Image'/></a>
+                                    <div className="img-big-wrap text-center">
+                                        <div><a href="."><img src={props.url_image} alt='Book'/></a>
                                         </div>
                                     </div>
 
@@ -35,7 +42,7 @@ const BookDetail = (props) => {
 
                                     <p className="price-detail-wrap">
                                         <span className="price h3 text-warning">
-                                            <span className="currency">IDR Rp. </span><span className="num">{props.price}</span>
+                                            <span className="currency">Rp. </span><span className="num">{props.price}</span>
                                         </span>
                                     </p>
                                     <dl className="item-property">
@@ -70,49 +77,20 @@ const BookDetail = (props) => {
 
                                     <hr/>
                                         <div className="row">
-                                            <div className="col-sm-5">
-                                                <dl className="param param-inline">
-                                                    <dt>Quantity:</dt>
-                                                    <dd>
-                                                        <select className="form-control form-control-sm"
-                                                                style={{width:'70px'}}>
-                                                            <option> 1</option>
-                                                            <option> 2</option>
-                                                            <option> 3</option>
-                                                            <option> 4</option>
-                                                            <option> 5</option>
-                                                        </select>
-                                                    </dd>
-                                                </dl>
-
+                                            <div className="col-sm-12">
+                                                <div className="form-group mx-sm-3 mb-2 text-center">
+                                                    <label htmlFor="inputPassword2" className="sr-only">Number Order</label>
+                                                    <input name="order_qty" onChange={(e) => props.postOrder(e)} type="number" className="form-control" id="inputPassword2"
+                                                           placeholder="Number of Order"/>
+                                                </div>
                                             </div>
-
-                                            <div className="col-sm-7">
-                                                <dl className="param param-inline">
-                                                    <dt>Assurance:</dt>
-                                                    <dd>
-                                                        <label className="form-check form-check-inline">
-                                                            <input className="form-check-input" type="radio"
-                                                                   name="inlineRadioOptions" id="inlineRadio2"
-                                                                   value="option2"/>
-                                                                <span className="form-check-label">Yes</span>
-                                                        </label>
-                                                        <label className="form-check form-check-inline">
-                                                            <input className="form-check-input" type="radio"
-                                                                   name="inlineRadioOptions" id="inlineRadio2"
-                                                                   value="option2"/>
-                                                                <span className="form-check-label">No</span>
-                                                        </label>
-                                                    </dd>
-                                                </dl>
-
-                                            </div>
-
                                         </div>
 
                                         <hr/>
-                                            <a href="#" className="btn btn-lg btn-primary text-uppercase"> Buy now </a>
-                                            <a href="#" className="btn btn-lg btn-outline-primary text-uppercase"><i className="fas fa-shopping-cart"/> Add to cart </a>
+                                        <div className="d-flex justify-content-between">
+                                            <Link to="/cart" className="btn btn-lg btn-primary text-uppercase"> Buy now </Link>
+                                            <button onClick={e => handleClick(e)} value={props.book_id} type="button" className="btn btn-outline-primary">Add to cart</button>
+                                        </div>
                                 </article>
 
                             </aside>
@@ -140,8 +118,6 @@ const BookDetail = (props) => {
                             <div className="tab-pane fade" id="profile" role="tabpanel"
                                  aria-labelledby="profile-tab">
                                 <p className='p-3'>1 review untuk judul buku ini</p>
-                                <ReviewBook/>
-                                <ReviewBook/>
                                 <ReviewBook/>
                             </div>
                         </div>

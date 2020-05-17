@@ -3,7 +3,6 @@ import React, {Fragment} from "react";
 // import static files
 import "../../assets/styles/HomePage.css";
 import Background from '../../assets/images/slider/slider-03.jpg'
-import {BookSearch} from "../Search";
 import {Link} from "react-router-dom";
 
 const HomeBanner = () => {

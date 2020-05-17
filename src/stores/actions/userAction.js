@@ -131,8 +131,13 @@ export const changeInputUser = (e) => {
 };
 
 export const doSignOut = () => {
-    return {
-        type: "SUCCESS_LOGOUT",
+    return async (dispatch) => {
+        dispatch(
+            { type: "SUCCESS_LOGOUT"}
+        );
+        localStorage.removeItem('is_login');
+        localStorage.removeItem('avatar');
+        localStorage.removeItem('token');
     };
 };
 

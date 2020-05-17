@@ -14,9 +14,13 @@ import Breadcrumbs from "@material-ui/core/Breadcrumbs";
 import Typography from "@material-ui/core/Typography";
 import CardCategory from "../components/CardCategoryComp";
 import {changeInputUser, closeAlert, doSignOut} from "../stores/actions/userAction";
+import {doGetTransaction} from "../stores/actions/transactionAction";
 
 class ProductPage extends Component {
     componentDidMount = async () => {
+        const token = localStorage.getItem("token");
+        this.props.doGetTransaction(token);
+
         this.props.getPopularProduct();
         console.log(this.props)
 
@@ -126,6 +130,7 @@ const mapStateToProps = (state) => {
         new_book: state.book.listNew,
         promo_book: state.book.listPromo,
         info: state.user.infos,
+        trans: state.transaction,
     };
 };
 
@@ -133,7 +138,7 @@ const mapDispatchToProps = {
     changeInput: (e) => changeInputUser(e),
     closeAlert, doSignOut,
 
-    getPopularProduct
+    getPopularProduct, doGetTransaction
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(ProductPage);

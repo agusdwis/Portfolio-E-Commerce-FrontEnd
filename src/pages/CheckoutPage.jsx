@@ -46,7 +46,7 @@ class CheckoutPage extends Component {
                                                                 <div className="col-md-6 mb-3">
                                                                     <label htmlFor="firstName">First name</label>
                                                                     <input type="text" className="form-control"
-                                                                           id="firstName" placeholder="" value=""
+                                                                           id="firstName" placeholder="Firstname" value="firstname"
                                                                            required/>
                                                                         <div className="invalid-feedback">
                                                                             Valid first name is required.
@@ -55,7 +55,7 @@ class CheckoutPage extends Component {
                                                                 <div className="col-md-6 mb-3">
                                                                     <label htmlFor="lastName">Last name</label>
                                                                     <input type="text" className="form-control"
-                                                                           id="lastName" placeholder="" value=""
+                                                                           id="lastName" placeholder="Lastname" value="lastname"
                                                                            required/>
                                                                         <div className="invalid-feedback">
                                                                             Valid last name is required.
@@ -213,6 +213,7 @@ const mapStateToProps = (state) => {
         popular_book: state.book.listPopular,
         new_book: state.book.listNew,
         promo_book: state.book.listPromo,
+        trans: state.transaction,
     };
 };
 

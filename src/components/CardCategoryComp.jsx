@@ -1,6 +1,5 @@
 import React, {Fragment} from "react";
 import '../assets/styles/ProductPage.css';
-import {Link} from "react-router-dom";
 
 const CardCategory = (props) => {
     return(
@@ -9,8 +8,7 @@ const CardCategory = (props) => {
                     <div className="row mb-2">
                         <div className="col-4">
                             <img width="70" height="100"
-                                // src={require('../assets/images/product/book01.jpeg')} alt="Book"/>
-                                src={props.url_image} />
+                                src={props.url_image} alt="Book"/>
                         </div>
                         <div className="col-8">
                             <p>{props.title}</p>

@@ -54,9 +54,15 @@ const NavBar = (props, postLogout) => {
                         }
                         <div className="navbar-nav">
                             <Link to="/cart" className="nav-item nav-link">
-                                <Badge badgeContent={100} color="error">
-                                    <ShoppingCartIcon />
-                                </Badge>
+                                {props.login || login ?
+                                    <Badge badgeContent={props.trans.total_qty} color="error">
+                                        <ShoppingCartIcon/>
+                                    </Badge>
+                                    :
+                                    <Badge badgeContent={0} color="error">
+                                        <ShoppingCartIcon/>
+                                    </Badge>
+                                }
                             </Link>
                         </div>
                     </div>

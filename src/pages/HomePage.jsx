@@ -5,11 +5,16 @@ import HomeBanner from "../components/HomePage/HomeBannerComp";
 import {HighlightBook} from "../components/HomePage/HighlightBookComp";
 import {changeInputUser, closeAlert, doSignOut} from "../stores/actions/userAction";
 import {getAllProduct, getPopularProduct, getNewProduct, getPromoProduct, getLimitedProduct} from "../stores/actions/bookAction";
+import {doGetTransaction} from "../stores/actions/transactionAction";
+
 import {connect} from "react-redux";
 import Separator from "../components/Separator";
 
 class HomePage extends Component {
     componentDidMount= async () => {
+        const token = localStorage.getItem("token");
+        this.props.doGetTransaction(token);
+
         this.props.getAllProduct();
         this.props.getPopularProduct();
         this.props.getNewProduct();
@@ -17,12 +22,6 @@ class HomePage extends Component {
         this.props.getLimitedProduct();
 
     };
-
-    // handleUserBook = async (bookID) => {
-    //     await this.props.history.replace("/produk/" + bookID);
-    //     const paramId = await this.props.match.params.bookID;
-    //
-    // };
 
     handleClick=(e)=>{
         e.preventDefault();
@@ -190,6 +189,7 @@ const mapStateToProps = (state) => {
         promo_book: state.book.listPromo,
         limited_book: state.book.listLimited,
         info: state.user.infos,
+        trans: state.transaction,
     };
 };
 
@@ -198,6 +198,8 @@ const mapDispatchToProps = {
     closeAlert, doSignOut,
 
     getAllProduct, getPopularProduct, getNewProduct, getPromoProduct, getLimitedProduct,
+
+    doGetTransaction,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(HomePage);

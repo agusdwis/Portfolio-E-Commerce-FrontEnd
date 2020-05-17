@@ -24,7 +24,9 @@ const initialState = {
     visible: false,
     reg_error: false,
     reg_success: false,
-    infos: []
+    infos: [],
+
+    order_qty: ""
 };
 
 export default function userReducer(userState = initialState, action) {

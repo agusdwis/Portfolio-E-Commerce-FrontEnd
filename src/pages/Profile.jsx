@@ -3,15 +3,19 @@ import React, {Component, Fragment} from "react";
 import '../assets/styles/Profile.css';
 import NavBar from "../components/NavBarComp";
 import {changeInputUser, doRegister, doSignOut, getProfile} from "../stores/actions/userAction";
+import {doGetTransaction} from "../stores/actions/transactionAction";
 import {connect} from "react-redux";
 import {Link, Redirect} from "react-router-dom";
 
 class Profile extends Component{
     componentDidMount = async () => {
+        const token = localStorage.getItem("token");
+
         if (this.props.login){
             localStorage.setItem("is_login", true);
         }
-        this.props.getProfile(localStorage.getItem("token"));
+        this.props.getProfile(token);
+        this.props.doGetTransaction(token);
 
 };
     render() {
@@ -175,13 +179,15 @@ const mapStateToProps = (state) => {
         login: state.user.is_login,
         visible: state.user.visible,
         info: state.user.infos,
-        data: state.user
+        data: state.user,
+        trans: state.transaction
+
     };
 };
 
 const mapDispatchToProps = {
     changeInput: (e) => changeInputUser(e),
-    doRegister, doSignOut, getProfile
+    doRegister, doSignOut, getProfile, doGetTransaction
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Profile);

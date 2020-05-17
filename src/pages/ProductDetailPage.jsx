@@ -11,17 +11,25 @@ import {HighlightBook} from "../components/HomePage/HighlightBookComp";
 import FooterComp from "../components/FooterComp";
 import {changeInputUser, closeAlert, doSignOut} from "../stores/actions/userAction";
 import {getBookByID, getPopularProduct, getAllProduct} from "../stores/actions/bookAction";
+import {doGetTransaction, doPostTransaction} from "../stores/actions/transactionAction";
 import {connect} from "react-redux";
 import Separator from "../components/Separator";
 
 class ProductDetail extends Component {
     componentDidMount = async() => {
+        this.props.doGetTransaction();
+
         const paramId = await this.props.match.params.id;
-        console.log(paramId);
         this.props.getBookByID(paramId);
         this.props.getPopularProduct();
         this.props.getAllProduct();
     };
+    
+    // componentDidUpdate = () => {
+    //     this.props.doGetTransaction();
+    //     const paramId = this.props.match.params.id;
+    //     this.props.getBookByID(paramId);
+    // };
 
     handleClick=(e)=>{
         e.preventDefault();
@@ -63,6 +71,9 @@ class ProductDetail extends Component {
                                 penerbit={el.penerbit} price={el.price} category={el.category}
                                 url_image={el.image} desc={el.description} sold={el.sold} stock={el.stock}
                                 promo={el.promo} discount={el.discount} limited={el.limited} status={el.status} book_id={el.id}
+
+                                postCart={(e) => this.props.doPostTransaction(e)}
+                                postOrder={(e) => this.props.changeInput(e)}
                     />
                 </div>
 
@@ -134,6 +145,7 @@ const mapStateToProps = (state) => {
         promo_book: state.book.listPromo,
         one_book: state.book.oneBook,
         info: state.user.infos,
+        trans: state.transaction,
     };
 };
 
@@ -141,7 +153,9 @@ const mapDispatchToProps = {
     changeInput: (e) => changeInputUser(e),
     closeAlert, doSignOut,
 
-    getBookByID, getPopularProduct, getAllProduct
+    getBookByID, getPopularProduct, getAllProduct,
+
+    doGetTransaction, doPostTransaction
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(ProductDetail);

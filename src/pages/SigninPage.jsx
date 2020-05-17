@@ -78,7 +78,8 @@ const mapStateToProps = (state) => {
         data: state.user,
         info: state.user.infos,
         login: state.user.is_login,
-        visible: state.user.visible
+        visible: state.user.visible,
+        trans: state.transaction,
     };
 };
 

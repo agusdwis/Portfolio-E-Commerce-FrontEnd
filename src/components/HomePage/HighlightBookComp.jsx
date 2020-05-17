@@ -14,7 +14,7 @@ export const HighlightBook = (props) => {
                         <img width="250"
                             src={props.url_image}
                              className="img-fluid attachment-woocommerce_thumbnail size-woocommerce_thumbnail"
-                             alt="Book Image Not Found"
+                             alt="Not Found"
                              sizes="(max-width: 250px) 100vw, 250px"/></figure></Link>
 
                     <div className="product-price-box clearfix" style={{height: "15vmin"}}>
