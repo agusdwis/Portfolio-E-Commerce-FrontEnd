@@ -7,12 +7,13 @@ import {changeInputUser, closeAlert, doSignOut} from "../stores/actions/userActi
 import {getPopularProduct} from "../stores/actions/bookAction";
 import {connect} from "react-redux";
 import '../assets/styles/TransactionPage.css';
+import FooterComp from "../components/FooterComp";
 
 class CartsPage extends Component {
     render() {
         return (
             <Fragment>
-                <NavBar/>
+                <NavBar {...this.props}/>
 
                 <div className="product-page wrapper">
                     <div className="jumbotron jumbotron-fluid">
@@ -28,84 +29,126 @@ class CartsPage extends Component {
                     </div>
                 </div>
 
-                <div className="container-fluid p-page detail-produk">
-                    <div className="container">
-                        <div id="content" className="main-content-inner" role="main">
-                            <article id="post-1707" className="post-1707 page type-page status-publish entry">
-                                <div className="entry-content">
-                                    <div className="woocommerce">
-                                        <div className="woocommerce-notices-wrapper"></div>
-                                        <form className="woocommerce-cart-form"
-                                              action="." method="post">
-                                            <table
-                                                className="shop_table shop_table_responsive cart woocommerce-cart-form__contents"
-                                                cellSpacing="0">
-                                                <thead>
-                                                <tr>
-                                                    <th className="product-remove">&nbsp;</th>
-                                                    <th className="product-thumbnail">&nbsp;</th>
-                                                    <th className="product-name">Product</th>
-                                                    <th className="product-price">Price</th>
-                                                    <th className="product-quantity">Quantity</th>
-                                                    <th className="product-subtotal">Subtotal</th>
-                                                </tr>
-                                                </thead>
-                                                <tbody>
+                <div className="container-fluid p-page">
+                    <div className="py-5">
+                        <div className="container">
+                            <div className="row">
+                                <div className="col-lg-12 p-5 bg-white rounded shadow-sm mb-5">
 
-                                                <tr className="woocommerce-cart-form__cart-item cart_item">
 
-                                                    <td className="product-remove">
-                                                        <a href="."
-                                                           className="remove" aria-label="Remove this item" data-product_id="96"
-                                                           data-product_sku="">×</a></td>
+                                    <div className="table-responsive">
+                                        <table className="table">
+                                            <thead>
+                                            <tr>
+                                                <th scope="col" className="border-0 bg-light">
+                                                    <div className="p-2 px-3 text-uppercase">Product</div>
+                                                </th>
+                                                <th scope="col" className="border-0 bg-light">
+                                                    <div className="py-2 text-uppercase">Price</div>
+                                                </th>
+                                                <th scope="col" className="border-0 bg-light">
+                                                    <div className="py-2 text-uppercase">Quantity</div>
+                                                </th>
+                                                <th scope="col" className="border-0 bg-light">
+                                                    <div className="py-2 text-uppercase">Remove</div>
+                                                </th>
+                                            </tr>
+                                            </thead>
+                                            <tbody>
 
-                                                    <td className="product-thumbnail">
-                                                        <a href="https://demo.tokopress.com/bookie/product/furiously-happy-a-funny-book-about-horrible-things/"><img
-                                                            width="100" height="200"
-                                                            src="https://demo.tokopress.com/bookie/wp-content/uploads/sites/7/2016/06/book-22-250x333.jpg"
-                                                            className="attachment-woocommerce_thumbnail size-woocommerce_thumbnail"
-                                                            alt=""
-                                                            srcSet="https://demo.tokopress.com/bookie/wp-content/uploads/sites/7/2016/06/book-22-250x333.jpg 250w, https://demo.tokopress.com/bookie/wp-content/uploads/sites/7/2016/06/book-22-225x300.jpg 225w, https://demo.tokopress.com/bookie/wp-content/uploads/sites/7/2016/06/book-22-600x800.jpg 600w, https://demo.tokopress.com/bookie/wp-content/uploads/sites/7/2016/06/book-22.jpg 750w"
-                                                            sizes="(max-width: 250px) 100vw, 250px"/></a></td>
+                                            <tr>
+                                                <th scope="row" className="border-0">
+                                                    <div className="p-2">
+                                                        <img
+                                                            src="https://res.cloudinary.com/mhmd/image/upload/v1556670479/product-1_zrifhn.jpg"
+                                                            alt="" width="70"
+                                                            className="img-fluid rounded shadow-sm"/>
+                                                            <div className="ml-3 d-inline-block align-middle">
+                                                                <h5 className="mb-0"><a href="#"
+                                                                                        className="text-dark d-inline-block align-middle">Timex
+                                                                    Unisex Originals</a></h5><span
+                                                                className="text-muted font-weight-normal font-italic d-block">Category: Watches</span>
+                                                            </div>
+                                                    </div>
+                                                </th>
+                                                <td className="border-0 align-middle"><strong>$79.00</strong>
+                                                </td>
+                                                <td className="border-0 align-middle"><strong>3</strong></td>
+                                                <td className="border-0 align-middle">
+                                                    <a href="#" className="text-dark"><i className="fa fa-trash"/></a></td>
+                                            </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
 
-                                                    <td className="product-name" data-title="Product">
-                                                        <a href="https://demo.tokopress.com/bookie/product/furiously-happy-a-funny-book-about-horrible-things/">See
-                                                            Me</a></td>
+                                </div>
+                            </div>
 
-                                                    <td className="product-price" data-title="Price">
-                                                <span className="woocommerce-Price-amount amount"><span
-                                                    className="woocommerce-Price-currencySymbol">$</span>9.00</span>
-                                                    </td>
-
-                                                    <td className="product-quantity" data-title="Quantity">
-                                                        <div className="quantity">
-                                                            <label className="screen-reader-text"
-                                                                   htmlFor="quantity_5ebe7ac4bd383">See Me quantity</label>
-                                                            <input type="number" id="quantity_5ebe7ac4bd383" width="10vmin"
-                                                                   className="input-text qty text" step="1" min="0" max=""
-                                                                   name="cart[26657d5ff9020d2abefe558796b99584][qty]" value="1"
-                                                                   title="Qty" size="2" placeholder="" inputMode="numeric"/>
-                                                        </div>
-                                                    </td>
-
-                                                    <td className="product-subtotal" data-title="Subtotal">
-                                                <span className="woocommerce-Price-amount amount"><span
-                                                    className="woocommerce-Price-currencySymbol">$</span>9.00</span>
-                                                    </td>
-                                                </tr>
-                                                </tbody>
-                                            </table>
-                                        </form>
-
+                            <div className="row py-5 p-4 bg-white rounded shadow-sm">
+                                <div className="col-lg-6">
+                                    <div
+                                        className="bg-light rounded-pill px-4 py-3 text-uppercase font-weight-bold">Coupon
+                                        code
+                                    </div>
+                                    <div className="p-4">
+                                        <p className="font-italic mb-4">If you have a coupon code, please enter
+                                            it in the box below</p>
+                                        <div className="input-group mb-4 border rounded-pill p-2">
+                                            <input type="text" placeholder="Apply coupon"
+                                                   aria-describedby="button-addon3"
+                                                   className="form-control border-0"/>
+                                                <div className="input-group-append border-0">
+                                                    <button id="button-addon3" type="button"
+                                                            className="btn btn-dark px-4 rounded-pill"><i className="fa fa-gift mr-2"/>Apply coupon
+                                                    </button>
+                                                </div>
+                                        </div>
+                                    </div>
+                                    <div
+                                        className="bg-light rounded-pill px-4 py-3 text-uppercase font-weight-bold">Instructions
+                                        for seller
+                                    </div>
+                                    <div className="p-4">
+                                        <p className="font-italic mb-4">If you have some information for the
+                                            seller you can leave them in the box below</p>
+                                        <textarea name="" cols="30" rows="2" className="form-control"/>
                                     </div>
                                 </div>
-                            </article>
+                                <div className="col-lg-6">
+                                    <div
+                                        className="bg-light rounded-pill px-4 py-3 text-uppercase font-weight-bold">Order
+                                        summary
+                                    </div>
+                                    <div className="p-4">
+                                        <p className="font-italic mb-4">Shipping and additional costs are
+                                            calculated based on values you have entered.</p>
+                                        <ul className="list-unstyled mb-4">
+                                            <li className="d-flex justify-content-between py-3 border-bottom">
+                                                <strong className="text-muted">Order
+                                                    Subtotal </strong><strong>$390.00</strong></li>
+                                            <li className="d-flex justify-content-between py-3 border-bottom">
+                                                <strong className="text-muted">Shipping and
+                                                    handling</strong><strong>$10.00</strong></li>
+                                            <li className="d-flex justify-content-between py-3 border-bottom">
+                                                <strong
+                                                    className="text-muted">Tax</strong><strong>$0.00</strong>
+                                            </li>
+                                            <li className="d-flex justify-content-between py-3 border-bottom">
+                                                <strong className="text-muted">Total</strong>
+                                                <h5 className="font-weight-bold">$400.00</h5>
+                                            </li>
+                                        </ul>
+                                        <Link to="/checkout" className="btn btn-dark rounded-pill py-2 btn-block">Procceed
+                                            to checkout</Link>
+                                    </div>
+                                </div>
+                            </div>
+
                         </div>
                     </div>
                 </div>
 
-
-
+                <FooterComp/>
             </Fragment>
         );
     }
