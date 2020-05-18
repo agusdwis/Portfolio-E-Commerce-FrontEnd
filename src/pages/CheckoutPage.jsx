@@ -5,11 +5,13 @@ import {Link} from "react-router-dom";
 import Typography from "@material-ui/core/Typography";
 import {changeInputUser, closeAlert, doSignOut} from "../stores/actions/userAction";
 import {getPopularProduct} from "../stores/actions/bookAction";
+import { changeInputPayment, doPostHistory, changeInputShipping } from "../stores/actions/transactionAction";
 import {connect} from "react-redux";
 import '../assets/styles/TransactionPage.css';
 import FooterComp from "../components/FooterComp";
 
 class CheckoutPage extends Component {
+
     render() {
         return (
             <Fragment>
@@ -41,41 +43,14 @@ class CheckoutPage extends Component {
                                                 <div className="row">
                                                     <div className="col-md-10 offset-1">
                                                         <h4 className="mb-3 p-2 px-3 bg-light">Billing address</h4>
-                                                        <form className="needs-validation" noValidate>
-                                                            <div className="row">
-                                                                <div className="col-md-6 mb-3">
-                                                                    <label htmlFor="firstName">First name</label>
-                                                                    <input type="text" className="form-control"
-                                                                           id="firstName" placeholder="Firstname" value="firstname"
-                                                                           required/>
-                                                                        <div className="invalid-feedback">
-                                                                            Valid first name is required.
-                                                                        </div>
-                                                                </div>
-                                                                <div className="col-md-6 mb-3">
-                                                                    <label htmlFor="lastName">Last name</label>
-                                                                    <input type="text" className="form-control"
-                                                                           id="lastName" placeholder="Lastname" value="lastname"
-                                                                           required/>
-                                                                        <div className="invalid-feedback">
-                                                                            Valid last name is required.
-                                                                        </div>
-                                                                </div>
-                                                            </div>
+                                                        <form>
 
                                                             <div className="mb-3">
-                                                                <label htmlFor="username">Username</label>
-                                                                <div className="input-group">
-                                                                    <div className="input-group-prepend">
-                                                                        <span className="input-group-text">@</span>
-                                                                    </div>
-                                                                    <input type="text" className="form-control"
-                                                                           id="username" placeholder="Username"
-                                                                           required/>
-                                                                        <div className="invalid-feedback"
-                                                                             style={{width: '100%'}}>
-                                                                            Your username is required.
-                                                                        </div>
+                                                                <label htmlFor="fullname">Full Name</label>
+                                                                <input type="text" className="form-control" id="name"
+                                                                       placeholder="Fullname"/>
+                                                                <div className="invalid-feedback">
+                                                                    Please enter a valid name.
                                                                 </div>
                                                             </div>
 
@@ -138,51 +113,44 @@ class CheckoutPage extends Component {
 
                                                                     <h4 className="mb-3 p-2 px-3 bg-light">Payment</h4>
 
-                                                                    <div className="row">
-                                                                        <div className="col-md-6 mb-3">
-                                                                            <label htmlFor="cc-name">Name on
-                                                                                card</label>
-                                                                            <input type="text" className="form-control"
-                                                                                   id="cc-name" placeholder="" required/>
-                                                                                <small className="text-muted">Full name
-                                                                                    as displayed on card</small>
-                                                                                <div className="invalid-feedback">
-                                                                                    Name on card is required
-                                                                                </div>
+                                                                        <div className="col-md-5 mb-3">
+                                                                            <label htmlFor="payment_method">Choose Payment Method</label>
+                                                                            <select className="custom-select d-block w-100"
+                                                                                    id="payment_method" name="payment_method" required>
+                                                                                {/*<option value="">Choose...</option>*/}
+                                                                                <option onClick={(e) =>this.props.changePayment(e)} value='1'>Transfer Bank Mandiri</option>
+                                                                                <option onClick={(e) =>this.props.changePayment(e)} value="2">Transfer Bank BCA</option>
+                                                                                <option onClick={(e) =>this.props.changePayment(e)} value="3">Transfer Bank BRI</option>
+                                                                                <option onClick={(e) =>this.props.changePayment(e)} value="4">Transfer Bank BNI</option>
+                                                                                <option onClick={(e) =>this.props.changePayment(e)} value="5">Transfer Bank DANA</option>
+                                                                                <option onClick={(e) =>this.props.changePayment(e)} value="6">Transfer Bank GoPay</option>
+                                                                            </select>
+
+                                                                            <div className="invalid-feedback">
+                                                                                Please select a valid country.
+                                                                            </div>
                                                                         </div>
-                                                                        <div className="col-md-6 mb-3">
-                                                                            <label htmlFor="cc-number">Credit card
-                                                                                number</label>
-                                                                            <input type="text" className="form-control"
-                                                                                   id="cc-number" placeholder=""
-                                                                                   required/>
-                                                                                <div className="invalid-feedback">
-                                                                                    Credit card number is required
-                                                                                </div>
-                                                                        </div>
-                                                                    </div>
-                                                                    <div className="row">
-                                                                        <div className="col-md-3 mb-3">
-                                                                            <label
-                                                                                htmlFor="cc-expiration">Expiration</label>
-                                                                            <input type="text" className="form-control"
-                                                                                   id="cc-expiration" placeholder=""
-                                                                                   required/>
-                                                                                <div className="invalid-feedback">
-                                                                                    Expiration date required
-                                                                                </div>
-                                                                        </div>
-                                                                        <div className="col-md-3 mb-3">
-                                                                            <label htmlFor="cc-expiration">CVV</label>
-                                                                            <input type="text" className="form-control"
-                                                                                   id="cc-cvv" placeholder="" required/>
-                                                                                <div className="invalid-feedback">
-                                                                                    Security code required
-                                                                                </div>
-                                                                        </div>
-                                                                    </div>
                                                                     <hr className="mb-4"/>
-                                                                        <button
+                                                                        <h4 className="mb- p-2 px-3 bg-light">Shipping</h4>
+
+                                                                        <div className="col-md-5 mb-3">
+                                                                            <label htmlFor="courier">Choose Shipping</label>
+                                                                            <select className="custom-select d-block w-100"
+                                                                                    id="courier" name="courier" required>
+                                                                                {/*<option value="">Choose...</option>*/}
+                                                                                <option onClick={(e)=>this.props.changeShipping(e)} value="1">TIKI</option>
+                                                                                <option onClick={(e)=>this.props.changeShipping(e)} value="2">JNE</option>
+                                                                                <option onClick={(e)=>this.props.changeShipping(e)} value="3">SiCepat</option>
+                                                                                <option onClick={(e)=>this.props.changeShipping(e)} value="4">POS Indonesia</option>
+                                                                                <option onClick={(e)=>this.props.changeShipping(e)} value="5">J&T</option>
+                                                                                <option onClick={(e)=>this.props.changeShipping(e)} value="6">Wahana</option>
+                                                                            </select>
+                                                                            <div className="invalid-feedback">
+                                                                                Please select a valid country.
+                                                                            </div>
+                                                                        </div>
+                                                                        <hr className="mb-4"/>
+                                                                        <button onClick={()=> this.props.doPostHistory()}
                                                                             className="btn btn-primary btn-lg btn-block"
                                                                             type="submit">Proceed
                                                                         </button>
@@ -221,7 +189,7 @@ const mapDispatchToProps = {
     changeInput: (e) => changeInputUser(e),
     closeAlert, doSignOut,
 
-    getPopularProduct
+    getPopularProduct, changePayment: (e) => changeInputPayment(e), doPostHistory, changeShipping:(e) => changeInputShipping(e)
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(CheckoutPage);

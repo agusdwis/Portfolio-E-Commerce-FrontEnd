@@ -25,11 +25,11 @@ class ProductDetail extends Component {
         this.props.getAllProduct();
     };
     
-    // componentDidUpdate = () => {
-    //     this.props.doGetTransaction();
-    //     const paramId = this.props.match.params.id;
-    //     this.props.getBookByID(paramId);
-    // };
+    componentDidUpdate = () => {
+        this.props.doGetTransaction();
+        const paramId = this.props.match.params.id;
+        this.props.getBookByID(paramId);
+    };
 
     handleClick=(e)=>{
         e.preventDefault();

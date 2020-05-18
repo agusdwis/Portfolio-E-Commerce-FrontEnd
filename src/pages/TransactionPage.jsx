@@ -18,9 +18,9 @@ class CartsPage extends Component {
         this.props.doGetTransaction();
     };
 
-    // componentDidUpdate = () => {
-    //     this.props.doGetTransaction();
-    // };
+    componentDidUpdate = () => {
+        this.props.doGetTransaction();
+    };
 
     render() {
         const transDetail = this.props.trans_detail;

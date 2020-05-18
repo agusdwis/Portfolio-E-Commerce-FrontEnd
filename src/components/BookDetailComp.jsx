@@ -89,7 +89,7 @@ const BookDetail = (props, handleClick) => {
                                         <hr/>
                                         <div className="d-flex justify-content-between">
                                             <Link to="/cart" className="btn btn-lg btn-primary text-uppercase"> Buy now </Link>
-                                            <button onClick={e => handleClick(e)} value={props.book_id} type="button" className="btn btn-outline-primary">Add to cart</button>
+                                            <button onClick={e => handleClick(e)} value={props.book_id} type="submit" className="btn btn-outline-primary">Add to cart</button>
                                         </div>
                                 </article>
 

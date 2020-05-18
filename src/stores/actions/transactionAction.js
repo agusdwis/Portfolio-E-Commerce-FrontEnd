@@ -98,3 +98,79 @@ export const doDeleteTransaction = (bookID) => {
     };
 };
 
+export const changeInputPayment = (e) => {
+    console.log(e);
+    return {
+        type: "CHANGE_INPUT_PAYMENT",
+        payload: e,
+    };
+
+};
+
+export const changeInputShipping = (e) => {
+    console.log(e);
+    return {
+        type: "CHANGE_INPUT_SHIPPING",
+        payload: e,
+    };
+
+};
+
+export const doPostHistory = () => {
+    return async (dispatch, getState) => {
+        let token;
+        if (getState().user.token) {
+            token = getState().user.token;
+        } else {
+            token = localStorage.getItem('token')
+        }
+
+        await axios({method:"post",
+            url:"http://0.0.0.0:5000/users/history/order/" + getState().transaction.trans_id,
+            params: {
+                payment_id: getState().transaction.payment_method,
+                shipping_method: getState().transaction.courier,
+            },
+            headers: {
+                "Content-Type": "application/json; charset=utf-8",
+                Accept: "application/json; charset=utf-8",
+                'Authorization':'Bearer ' + token
+            }
+        })
+            .then(async (response) => {
+                dispatch(
+                    { type:"SUCCESS_POST_HISTORY" }
+                )
+
+            })
+            .catch(function (error) {
+                console.log(error);
+            });
+    };
+};
+
+export const doGetHistory = () => {
+    return async (dispatch, getState) => {
+        let token;
+        if (getState().user.token) {
+            token = getState().user.token;
+        } else {
+            token = localStorage.getItem('token')
+        }
+
+        await axios({
+            method: 'get',
+            url: "http://0.0.0.0:5000/users/history/order",
+            headers: {'Authorization':'Bearer ' + token}
+        })
+            .then(async (response) => {
+                dispatch({
+                    type: "SUCCESS_GET_HISTORY",
+                    payload: response.data});
+
+            })
+            .catch(function (error) {
+                console.log(error);
+            });
+    };
+};

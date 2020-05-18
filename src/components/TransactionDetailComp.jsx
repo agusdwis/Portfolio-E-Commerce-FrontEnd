@@ -27,7 +27,7 @@ const TransDetailcomp = (props, handleClick) => {
                 </td>
                 <td className="border-0 align-middle"><strong>{props.qty}</strong></td>
                 <td className="border-0 align-middle">
-                    <Link to="/cart"><button onClick={e => handleClick(e)} value={props.book_id} className="btn btn-success"><i className="fa fa-trash"/></button></Link>
+                    <Link to="/cart"><button type="submit" onClick={e => handleClick(e)} value={props.book_id} className="btn btn-success"><i className="fa fa-trash"/></button></Link>
                 </td>
             </tr>
         </Fragment>
