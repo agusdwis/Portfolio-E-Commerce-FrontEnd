@@ -8,7 +8,7 @@ const NotMatch = () => {
 
     return (
         <React.Fragment>
-            <NavBar />
+            {/*<NavBar />*/}
             <div id="notfound">
                 <div className="notfound">
                     <div className="notfound-404">
