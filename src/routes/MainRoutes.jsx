@@ -16,6 +16,8 @@ import CartsPage from "../pages/TransactionPage";
 import CheckoutPage from "../pages/CheckoutPage";
 import HistoryPage from "../pages/HistoryPage";
 
+import AdminDasboard from "../pages/admin/DashBoards";
+
 const MainRoutes = () => {
     return(
         <Provider store={store}>
@@ -32,6 +34,11 @@ const MainRoutes = () => {
                     <Route exact path="/cart" component={CartsPage} />
                     <Route exact path="/checkout" component={CheckoutPage} />
                     <Route exact path="/history" component={HistoryPage} />
+
+                    <Route
+                        exact
+                        path={"/admin"}
+                        component={AdminDasboard} />
                     <Route component={NotMatch} />
                 </Switch>
             </BrowserRouter>
