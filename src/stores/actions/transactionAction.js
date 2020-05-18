@@ -1,4 +1,5 @@
 import axios from "axios";
+import store from "../index";
 
 export const doGetTransaction = () => {
     return async (dispatch, getState) => {
@@ -21,7 +22,8 @@ export const doGetTransaction = () => {
 
             })
             .catch(function (error) {
-                console.log(error);
+                console.log('%c Oh my heavens! ', 'background: #222; color: #bada55',
+                    "No Transaction Data");
             });
     };
 };
@@ -144,7 +146,8 @@ export const doPostHistory = () => {
 
             })
             .catch(function (error) {
-                console.log(error);
+                console.log('%c Oh my heavens! ', 'background: #222; color: #bada55',
+                    "No Transaction Data");
             });
     };
 };
@@ -170,7 +173,8 @@ export const doGetHistory = () => {
 
             })
             .catch(function (error) {
-                console.log(error);
+                console.log('%c Oh my heavens! ', 'background: #222; color: #bada55',
+                    "No Transaction Data");
             });
     };
 };

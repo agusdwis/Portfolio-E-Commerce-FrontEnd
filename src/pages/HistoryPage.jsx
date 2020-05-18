@@ -13,7 +13,6 @@ import {
 } from "../stores/actions/bookAction";
 import {doGetTransaction, doGetHistory} from "../stores/actions/transactionAction";
 import {connect} from "react-redux";
-import TransDetailcomp from "../components/TransactionDetailComp";
 
 class HistoryPage extends React.Component {
     componentDidMount= async () => {

@@ -26,35 +26,35 @@ class ProfileEditPage extends Component {
                                         <div className="md-form">
                                             <i className="fas fa-user prefix white-text"> </i>
                                             <input onChange={(e) => this.props.changeInput(e)} type="text"
-                                                   name="fullnameUser" id="orangeForm-email" placeholder="full name"
+                                                   name="fullnameUser" id="orangeForm-nama" placeholder="full name"
                                                    className="form-control" required/>
                                         </div>
                                         <br/>
                                         <div className="md-form">
                                             <i className="fas fa-address-book prefix white-text"> </i>
                                             <input onChange={(e) => this.props.changeInput(e)} type="text"
-                                                   name="addressUser" id="orangeForm-email" placeholder="address"
+                                                   name="addressUser" id="orangeForm-address" placeholder="address"
                                                    className="form-control" required/>
                                         </div>
                                         <br/>
                                         <div className="md-form">
                                             <i className="fas fa-phone prefix white-text"> </i>
                                             <input onChange={(e) => this.props.changeInput(e)} type="text"
-                                                   name="contactUser" id="orangeForm-email" placeholder="contact"
+                                                   name="contactUser" id="orangeForm-contact" placeholder="contact"
                                                    className="form-control" required/>
                                         </div>
                                         <br/>
                                         <div className="md-form">
                                             <i className="fas fa-bank prefix white-text"> </i>
                                             <input onChange={(e) => this.props.changeInput(e)} type="text"
-                                                   name="accountNumberUser" id="orangeForm-email" placeholder="account number"
+                                                   name="accountNumberUser" id="orangeForm-acccnumb" placeholder="account number"
                                                    className="form-control" required/>
                                         </div>
                                         <br/>
                                         <div className="md-form">
                                             <i className="fas fa-file-image-o prefix white-text"> </i>
                                             <input onChange={(e) => this.props.changeInput(e)} type="text"
-                                                   name="avatarUser" id="orangeForm-email" placeholder="user avatar"
+                                                   name="avatarUser" id="orangeForm-avatar" placeholder="user avatar"
                                                    className="form-control" required/>
                                         </div>
                                         <br/>
