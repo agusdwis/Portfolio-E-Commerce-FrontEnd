@@ -1,0 +1,5 @@
+Dockerfile
+node_modules
+!mydir/default.cfg
+!mydir/default.conf
+!mydir/try.conf

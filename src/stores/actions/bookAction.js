@@ -1,11 +1,11 @@
 import axios from "axios"
 
-
+const url = "https://bookmebe.agusdwisasongko.my.id"
 export const getAllProduct = () => {
     return async (dispatch) => {
 
         await axios
-            .get("http://localhost:5000/public/books", {
+            .get(url + "/public/books", {
                 headers: {
                     "Content-Type": "application/json; charset=utf-8",
                     Accept: "application/json; charset=utf-8"
@@ -28,7 +28,7 @@ export const getPopularProduct = () => {
     return async (dispatch) => {
 
         await axios
-            .get("http://localhost:5000/public/books/popular", {
+            .get(url + "/public/books/popular", {
                 headers: {
                     "Content-Type": "application/json; charset=utf-8",
                     Accept: "application/json; charset=utf-8"
@@ -51,7 +51,7 @@ export const getNewProduct = () => {
     return async (dispatch) => {
 
         await axios
-            .get("http://localhost:5000/public/books/new", {
+            .get(url + "/public/books/new", {
                 headers: {
                     "Content-Type": "application/json; charset=utf-8",
                     Accept: "application/json; charset=utf-8"
@@ -74,7 +74,7 @@ export const getPromoProduct = () => {
     return async (dispatch) => {
 
         await axios
-            .get("http://localhost:5000/public/books/promo", {
+            .get(url + "/public/books/promo", {
                 headers: {
                     "Content-Type": "application/json; charset=utf-8",
                     Accept: "application/json; charset=utf-8"
@@ -97,7 +97,7 @@ export const getLimitedProduct = () => {
     return async (dispatch) => {
 
         await axios
-            .get("http://localhost:5000/public/books/limited", {
+            .get(url + "/public/books/limited", {
                 headers: {
                     "Content-Type": "application/json; charset=utf-8",
                     Accept: "application/json; charset=utf-8"
@@ -120,7 +120,7 @@ export const getBookByID = (bookID) => {
     return async (dispatch) => {
 
         await axios
-            .get("http://localhost:5000/public/books/"+bookID, {
+            .get(url + "/public/books/"+bookID, {
                 headers: {
                     "Content-Type": "application/json; charset=utf-8",
                     Accept: "application/json; charset=utf-8"

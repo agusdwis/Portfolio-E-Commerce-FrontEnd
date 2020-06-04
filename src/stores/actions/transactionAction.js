@@ -1,6 +1,6 @@
 import axios from "axios";
-import store from "../index";
 
+const url = "https://bookmebe.agusdwisasongko.my.id"
 export const doGetTransaction = () => {
     return async (dispatch, getState) => {
         let token;
@@ -12,7 +12,7 @@ export const doGetTransaction = () => {
 
         await axios({
             method: 'get',
-            url: "http://0.0.0.0:5000/users/transaction",
+            url: url + "/users/transaction",
             headers: {'Authorization':'Bearer ' + token}
         })
             .then(async (response) => {
@@ -22,8 +22,8 @@ export const doGetTransaction = () => {
 
             })
             .catch(function (error) {
-                console.log('%c Oh my heavens! ', 'background: #222; color: #bada55',
-                    "No Transaction Data");
+                // console.log('%c Oh my heavens! ', 'background: #222; color: #bada55',
+                //     "No Transaction Data");
             });
     };
 };
@@ -45,7 +45,7 @@ export const doPostTransaction = (bookID) => {
         const myJSON = JSON.stringify(bodyRequest);
 
         await axios
-            .post("http://0.0.0.0:5000/users/transaction", myJSON, {
+            .post(url + "/users/transaction", myJSON, {
                 headers: {
                     "Content-Type": "application/json; charset=utf-8",
                     Accept: "application/json; charset=utf-8",
@@ -78,7 +78,7 @@ export const doDeleteTransaction = (bookID) => {
         }
 
         await axios
-            .delete("http://0.0.0.0:5000/users/transaction/" + bookID, {
+            .delete(url + "/users/transaction/" + bookID, {
                 headers: {
                     "Content-Type": "application/json; charset=utf-8",
                     Accept: "application/json; charset=utf-8",
@@ -128,7 +128,7 @@ export const doPostHistory = () => {
         }
 
         await axios({method:"post",
-            url:"http://0.0.0.0:5000/users/history/order/" + getState().transaction.trans_id,
+            url:url + "/users/history/order/" + getState().transaction.trans_id,
             params: {
                 payment_id: getState().transaction.payment_method,
                 shipping_method: getState().transaction.courier,
@@ -146,8 +146,8 @@ export const doPostHistory = () => {
 
             })
             .catch(function (error) {
-                console.log('%c Oh my heavens! ', 'background: #222; color: #bada55',
-                    "No Transaction Data");
+                // console.log('%c Oh my heavens! ', 'background: #222; color: #bada55',
+                //     "No Transaction Data");
             });
     };
 };
@@ -163,7 +163,7 @@ export const doGetHistory = () => {
 
         await axios({
             method: 'get',
-            url: "http://0.0.0.0:5000/users/history/order",
+            url: url + "/users/history/order",
             headers: {'Authorization':'Bearer ' + token}
         })
             .then(async (response) => {
@@ -173,8 +173,8 @@ export const doGetHistory = () => {
 
             })
             .catch(function (error) {
-                console.log('%c Oh my heavens! ', 'background: #222; color: #bada55',
-                    "No Transaction Data");
+                // console.log('%c Oh my heavens! ', 'background: #222; color: #bada55',
+                //     "No Transaction Data");
             });
     };
 };

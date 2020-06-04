@@ -25,7 +25,7 @@ class HomePage extends Component {
 
     handleClick=(e)=>{
         e.preventDefault();
-        this.props.history.push("/product/"+ e.target.value);
+        this.props.history.replace("/product/"+ e.target.value);
     };
 
     render() {
@@ -51,7 +51,7 @@ class HomePage extends Component {
                         </div>
                         <div className="container mt-3">
                             <div className="row">
-                                {PopularBook.slice(0,4).map((el, index) => (
+                                {PopularBook.slice(0,8).map((el, index) => (
                                     <div key={index} className="col-sm-3 col-md-3 card-cascade mb-5 pb-5 card-product" >
                                         <HighlightBook title={el.title} penulis={el.penulis}
                                                 penerbit={el.penerbit} price={el.price} category={el.category}
@@ -77,7 +77,7 @@ class HomePage extends Component {
                         </div>
                         <div className="container mt-3">
                             <div className="row">
-                                {NewBook.slice(0,4).map((el, index) => (
+                                {NewBook.slice(0,8).map((el, index) => (
                                     <div key={index} className="col-sm-3 col-md-3 card-cascade mb-5 pb-5 card-product">
                                         <HighlightBook title={el.title} penulis={el.penulis}
                                                        penerbit={el.penerbit} price={el.price} category={el.category}
@@ -103,7 +103,7 @@ class HomePage extends Component {
                         </div>
                         <div className="container mt-3">
                             <div className="row">
-                                {AllBook.slice(0,4).map((el, index) => (
+                                {AllBook.slice(0,8).map((el, index) => (
                                     <div key={index} className="col-sm-3 col-md-3 card-cascade mb-5 pb-5 card-product">
                                         <HighlightBook title={el.title} penulis={el.penulis}
                                                        penerbit={el.penerbit} price={el.price} category={el.category}
@@ -129,7 +129,7 @@ class HomePage extends Component {
                         </div>
                         <div className="container mt-3">
                             <div className="row">
-                                {PromoBook.slice(0,4).map((el, index) => (
+                                {PromoBook.slice(0,8).map((el, index) => (
                                     <div key={index} className="col-sm-3 col-md-3 card-cascade mb-5 pb-5 card-product">
                                         <HighlightBook {...this.props} title={el.title} penulis={el.penulis}
                                                        penerbit={el.penerbit} price={el.price} category={el.category}
@@ -155,7 +155,7 @@ class HomePage extends Component {
                         </div>
                         <div className="container mt-3">
                             <div className="row">
-                                {LimitedBook.slice(0,4).map((el, index) => (
+                                {LimitedBook.slice(0,8).map((el, index) => (
                                     <div key={index} className="col-sm-3 col-md-3 card-cascade mb-5 pb-5 card-product">
                                         <HighlightBook {...this.props} title={el.title} penulis={el.penulis}
                                                        penerbit={el.penerbit} price={el.price} category={el.category}

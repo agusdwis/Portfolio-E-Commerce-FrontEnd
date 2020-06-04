@@ -1,5 +1,6 @@
 import axios from "axios";
 
+const url = "https://bookmebe.agusdwisasongko.my.id"
 export const doRegister = () => {
     return async (dispatch, getState) => {
         const bodyRequest= {
@@ -17,7 +18,7 @@ export const doRegister = () => {
         const myJSON = JSON.stringify(bodyRequest);
 
         await axios
-            .post("http://localhost:5000/users/register", myJSON, {
+            .post(url + "/users/register", myJSON, {
                 headers: {
                     "Content-Type": "application/json; charset=utf-8",
                     Accept: "application/json; charset=utf-8"
@@ -53,7 +54,7 @@ export const doEditProfile = (token) => {
         const myJSON = JSON.stringify(bodyRequest);
 
         await axios
-            .put("http://localhost:5000/users/info", myJSON, {
+            .put(url + "/users/info", myJSON, {
                 headers: {
                     'Authorization':'Bearer ' + token,
                     "Content-Type": "application/json; charset=utf-8",
@@ -78,7 +79,7 @@ export const doLogin = () => {
     return async (dispatch, getState) => {
 
         await axios({method:"post",
-                url:"http://0.0.0.0:5000/users/login",
+                url:url + "/users/login",
                 params: {
                     username: getState().user.namaUser,
                     password: getState().user.passwordUser,
@@ -106,7 +107,7 @@ export const getProfile = (token) => {
     return async (dispatch) => {
         await axios({
             method: 'get',
-            url: "http://0.0.0.0:5000/users/info",
+            url: url + "/users/info",
             headers: {'Authorization':'Bearer ' + token}
         })
             .then(async (response) => {
