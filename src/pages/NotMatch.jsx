@@ -1,5 +1,4 @@
 import React from "react";
-import NavBar from "../components/NavBarComp";
 import {Link} from "react-router-dom";
 
 import '../assets/styles/NotMatch.css';
