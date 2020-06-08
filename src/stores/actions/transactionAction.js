@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const url = "https://bookmebe.agusdwisasongko.my.id"
+const url = process.env.REACT_APP_PUBLIC_URL;
 export const doGetTransaction = () => {
     return async (dispatch, getState) => {
         let token;

@@ -1,75 +1,223 @@
-import React, {Fragment} from "react";
-import {Link} from "react-router-dom"
+import React from 'react';
+
+import NotificationsIcon from '@material-ui/icons/Notifications';
+import AccountCircle from '@material-ui/icons/AccountCircle';
+import { fade, makeStyles } from '@material-ui/core/styles';
+import IconButton from '@material-ui/core/IconButton';
+import Typography from '@material-ui/core/Typography';
+import InputBase from '@material-ui/core/InputBase';
+import SearchIcon from '@material-ui/icons/Search';
+import MoreIcon from '@material-ui/icons/MoreVert';
+import MenuItem from '@material-ui/core/MenuItem';
+import Toolbar from '@material-ui/core/Toolbar';
+import MailIcon from '@material-ui/icons/Mail';
+import AppBar from '@material-ui/core/AppBar';
 import Badge from '@material-ui/core/Badge';
-import ShoppingCartIcon from '@material-ui/icons/ShoppingCart';
-// import static files
-import "../assets/styles/NavBarComp.css"
-import {Search} from "./Search";
-import Avatar from "@material-ui/core/Avatar";
+import Menu from '@material-ui/core/Menu';
 
-const NavBar = (props, postLogout) => {
-    postLogout = async () => {
-        localStorage.removeItem('is_login');
-        localStorage.removeItem('avatar');
-        localStorage.removeItem('token');
-        await props.doSignOut();
-    };
+const useStyles = makeStyles((theme) => ({
+    grow: {
+        flexGrow: 1,
+    },
+    toolbar: {
+        [theme.breakpoints.up('lg')]: {
+            paddingLeft: theme.spacing(10),
+            paddingRight: theme.spacing(10)
+        },
+    },
+    menuButton: {
+        marginRight: theme.spacing(2),
+    },
+    title: {
+        display: 'none',
+        [theme.breakpoints.up('sm')]: {
+            display: 'block',
+        },
+        fontSize: `calc(14px + 1vw)`,
+        fontWeight: 'bold'
+    },
+    search: {
+        position: 'relative',
+        borderRadius: theme.shape.borderRadius,
+        backgroundColor: fade(theme.palette.common.white, 0.15),
+        '&:hover': {
+            backgroundColor: fade(theme.palette.common.white, 0.25),
+        },
+        marginRight: theme.spacing(2),
+        marginLeft: 0,
+        width: '100%',
+        [theme.breakpoints.up('sm')]: {
+            marginLeft: theme.spacing(3),
+            width: 'auto',
+        },
+    },
+    searchIcon: {
+        padding: theme.spacing(0, 2),
+        height: '100%',
+        position: 'absolute',
+        pointerEvents: 'none',
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+    },
+    inputRoot: {
+        color: 'inherit',
+    },
+    inputInput: {
+        padding: theme.spacing(1, 1, 1, 0),
+        paddingLeft: `calc(1em + ${theme.spacing(4)}px)`,
+        transition: theme.transitions.create('width'),
+        minWidth: '40vw',
+        [theme.breakpoints.up('md')]: {
+            width: 'auto',
+        },
+    },
+    sectionDesktop: {
+        display: 'none',
+        [theme.breakpoints.up('md')]: {
+            display: 'flex',
+        },
+    },
+    sectionMobile: {
+        display: 'flex',
+        [theme.breakpoints.up('md')]: {
+            display: 'none',
+        },
+    },
+}));
 
-    const login = localStorage.getItem('is_login');
-    const avatar = localStorage.getItem('avatar');
-    return(
-        <Fragment>
-            <nav className="navbar navbar-expand-lg navbar-dark scrolling-navbar ">
-                <div className="container">
-                    <button type="button" className="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
-                        <span className="navbar-toggler-icon"/>
-                    </button>
-                    <div className="collapse navbar-collapse justify-content-between" id="navbarCollapse">
-                        <div className="navbar-nav">
-                            <Link to="/" className="nav-item nav-link active">HOME</Link>
-                            <div className="nav-item dropdown">
-                                <Link to="#" className="nav-link dropdown-toggle" data-toggle="dropdown">KATEGORI</Link>
-                                <div className="dropdown-menu">
-                                    <Link to="#" className="dropdown-item">Fiction</Link>
-                                    <Link to="#" className="dropdown-item">Inspiration</Link>
-                                    <Link to="#" className="dropdown-item">Programming</Link>
-                                    <Link to="#" className="dropdown-item">Life Style</Link>
-                                    <Link to="#" className="dropdown-item">Bussiness</Link>
-                                </div>
-                            </div>
+export default function NavBar(props) {
+    const classes = useStyles();
+    const [anchorEl, setAnchorEl] = React.useState(null);
+    const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = React.useState(null);
+
+    const isMenuOpen = Boolean(anchorEl);
+    const isMobileMenuOpen = Boolean(mobileMoreAnchorEl);
+
+    const handleProfileMenuOpen = (event) => { setAnchorEl(event.currentTarget) };
+
+    const handleMobileMenuClose = () => { setMobileMoreAnchorEl(null) };
+
+    const handleMenuClose = () => { setAnchorEl(null); handleMobileMenuClose() };
+
+    const handleMobileMenuOpen = (event) => { setMobileMoreAnchorEl(event.currentTarget) };
+
+    const menuId = 'primary-search-account-menu';
+    const renderMenu = (
+        <Menu
+            anchorEl={anchorEl}
+            anchorOrigin={{ vertical: 'top', horizontal: 'right' }}
+            id={menuId}
+            keepMounted
+            transformOrigin={{ vertical: 'top', horizontal: 'right' }}
+            open={isMenuOpen}
+            onClose={handleMenuClose}
+        >
+            <MenuItem onClick={handleMenuClose}>Profile</MenuItem>
+            <MenuItem onClick={handleMenuClose}>My account</MenuItem>
+        </Menu>
+    );
+
+    const mobileMenuId = 'primary-search-account-menu-mobile';
+    const renderMobileMenu = (
+        <Menu
+            anchorEl={mobileMoreAnchorEl}
+            anchorOrigin={{ vertical: 'top', horizontal: 'right' }}
+            id={mobileMenuId}
+            keepMounted
+            transformOrigin={{ vertical: 'top', horizontal: 'right' }}
+            open={isMobileMenuOpen}
+            onClose={handleMobileMenuClose}
+        >
+            <MenuItem>
+                <IconButton aria-label="show 4 new mails" color="inherit">
+                    <Badge badgeContent={4} color="secondary">
+                        <MailIcon />
+                    </Badge>
+                </IconButton>
+                <p>Messages</p>
+            </MenuItem>
+            <MenuItem>
+                <IconButton aria-label="show 11 new notifications" color="inherit">
+                    <Badge badgeContent={11} color="secondary">
+                        <NotificationsIcon />
+                    </Badge>
+                </IconButton>
+                <p>Notifications</p>
+            </MenuItem>
+            <MenuItem onClick={handleProfileMenuOpen}>
+                <IconButton
+                    aria-label="account of current user"
+                    aria-controls="primary-search-account-menu"
+                    aria-haspopup="true"
+                    color="inherit"
+                >
+                    <AccountCircle />
+                </IconButton>
+                <p>Profile</p>
+            </MenuItem>
+        </Menu>
+    );
+
+    return (
+        <div className={classes.grow}>
+            <AppBar position="static">
+                <Toolbar className={classes.toolbar}>
+                    <Typography className={classes.title} variant="h6" noWrap>
+                        BOOK.me
+                    </Typography>
+                    <div className={classes.grow} />
+                    <div className={classes.search}>
+                        <div className={classes.searchIcon}>
+                            <SearchIcon />
                         </div>
-
-                        <Search/>
-
-                        {props.login || login?
-                            <div className="navbar-nav mx-1">
-                                <Link to={'/profile'}><Avatar alt="Remy Sharp" src={avatar}/></Link>
-                                <Link onClick={()=>postLogout()} to="#" className="nav-item nav-link">KELUAR</Link>
-                            </div>
-                            :
-                            <div className="navbar-nav mx-1">
-                                <Link to="/login" className="nav-item nav-link">MASUK</Link>
-                                <Link to="/register" className="nav-item nav-link">DAFTAR</Link>
-                            </div>
-                        }
-                        <div className="navbar-nav">
-                            <Link to="/cart" className="nav-item nav-link">
-                                {props.login || login ?
-                                    <Badge badgeContent={props.trans.total_qty} color="error">
-                                        <ShoppingCartIcon/>
-                                    </Badge>
-                                    :
-                                    <Badge badgeContent={0} color="error">
-                                        <ShoppingCartIcon/>
-                                    </Badge>
-                                }
-                            </Link>
-                        </div>
+                        <InputBase
+                            placeholder="Cari Produk, Judul Buku, Penulis"
+                            classes={{
+                                root: classes.inputRoot,
+                                input: classes.inputInput,
+                            }}
+                            inputProps={{ 'aria-label': 'search' }}
+                        />
                     </div>
-                </div>
-            </nav>
-        </Fragment>
-    )
-};
-
-export default NavBar;
+                    <div className={classes.grow} />
+                    <div className={classes.sectionDesktop}>
+                        <IconButton aria-label="show 4 new mails" color="inherit">
+                            <Badge badgeContent={4} color="secondary">
+                                <MailIcon />
+                            </Badge>
+                        </IconButton>
+                        <IconButton aria-label="show 17 new notifications" color="inherit">
+                            <Badge badgeContent={17} color="secondary">
+                                <NotificationsIcon />
+                            </Badge>
+                        </IconButton>
+                        <IconButton
+                            edge="end"
+                            aria-label="account of current user"
+                            aria-controls={menuId}
+                            aria-haspopup="true"
+                            onClick={handleProfileMenuOpen}
+                            color="inherit"
+                        >
+                            <AccountCircle />
+                        </IconButton>
+                    </div>
+                    <div className={classes.sectionMobile}>
+                        <IconButton
+                            aria-label="show more"
+                            aria-controls={mobileMenuId}
+                            aria-haspopup="true"
+                            onClick={handleMobileMenuOpen}
+                            color="inherit"
+                        >
+                            <MoreIcon />
+                        </IconButton>
+                    </div>
+                </Toolbar>
+            </AppBar>
+            {renderMobileMenu}
+            {renderMenu}
+        </div>
+    );
+}

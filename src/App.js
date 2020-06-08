@@ -5,9 +5,9 @@ import MainRoutes from "./routes/MainRoutes";
 
 function App() {
   return (
-    <Fragment>
+    <React.Fragment>
         <MainRoutes/>
-    </Fragment>
+    </React.Fragment>
   );
 }
 

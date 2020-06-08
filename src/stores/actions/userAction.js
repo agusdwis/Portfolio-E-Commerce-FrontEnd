@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const url = "https://bookmebe.agusdwisasongko.my.id"
+const url = process.env.REACT_APP_PUBLIC_URL;
 export const doRegister = () => {
     return async (dispatch, getState) => {
         const bodyRequest= {
