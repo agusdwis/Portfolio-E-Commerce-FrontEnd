@@ -17,8 +17,8 @@ env:
   global:
   - TRAVIS_ALLOW_FAILURE=false
 install:
-- npm install
-- npm run build
+- yarn install
+- yarn run build
 #- npm run test
 
 before_script:
