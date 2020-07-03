@@ -1,3 +1,3 @@
 # BOOK.Me
 
-Link Deploy : [CEK THIS OUT](https://book-dot-me.netlify.app/)
+This project was deployed in [THIS](https://bookme.agusdwisasongko.my.id/) Link.
