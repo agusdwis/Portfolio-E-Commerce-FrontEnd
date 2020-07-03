@@ -19,7 +19,7 @@ class CartsPage extends Component {
     };
 
     componentDidUpdate = () => {
-        this.props.doGetTransaction();
+        //this.props.doGetTransaction();
     };
 
     render() {
